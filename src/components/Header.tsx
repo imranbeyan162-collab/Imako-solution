@@ -80,8 +80,17 @@ export function Header() {
           })}
         </nav>
 
-        {/* Action Button: Get a Quote */}
-        <div className="hidden sm:flex items-center space-x-3">
+        {/* Action Button: Get a Quote & Instagram */}
+        <div className="hidden sm:flex items-center space-x-2.5">
+          <a
+            href="https://www.instagram.com/imakosolution"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Follow @imakosolution on Instagram"
+            className="p-2.5 rounded-xl bg-white border border-[#3BA7F2]/40 text-[#0B3D91] hover:text-[#3BA7F2] hover:border-[#7FE7D6] transition-all hover:scale-105 shadow-xs"
+          >
+            <span className="text-[11px] font-mono font-black">IG</span>
+          </a>
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0B3D91] via-[#3BA7F2] to-[#7FE7D6] hover:brightness-105 shadow-md shadow-[#3BA7F2]/25 transition-all transform hover:-translate-y-0.5"

@@ -172,7 +172,7 @@ export default function ServicesPage() {
                         </p>
                         <div className="flex items-center gap-2 pt-1">
                           <a
-                            href="https://wa.me/251907173634?text=Hello%20Imako%20Solution,%20I%20want%20to%20test%20your%20chatbot%20demo."
+                            href="https://wa.me/251912251113?text=Hello%20Imako%20Solution,%20I%20want%20to%20test%20your%20chatbot%20demo."
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 text-center py-1.5 rounded-xl bg-[#7FE7D6] text-[#0B3D91] hover:brightness-105 border border-[#0B3D91]/20 text-[10px] font-bold transition-all hover:scale-102"

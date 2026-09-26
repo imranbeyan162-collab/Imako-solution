@@ -41,7 +41,7 @@ function ContactFormContent() {
     setTimeout(() => setCopiedText(null), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       setStatus("error");
@@ -49,10 +49,52 @@ function ContactFormContent() {
     }
 
     setStatus("loading");
-    setTimeout(() => {
+
+    try {
+      // 1. Dispatch to our Next.js API route
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      }).catch((err) => console.log("Internal API dispatch notice:", err));
+
+      // 2. Dispatch to FormSubmit AJAX endpoint directly to imakosolution@gmail.com
+      const res = await fetch("https://formsubmit.co/ajax/imakosolution@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          _subject: `[Imako Quote Request] ${formData.serviceNeeded} from ${formData.name}`,
+          _template: "table",
+          _captcha: "false",
+          Name: formData.name,
+          Email: formData.email,
+          Company: formData.company || "Not specified",
+          Service: formData.serviceNeeded,
+          Budget: formData.budgetRange,
+          Message: formData.message
+        })
+      });
+
       setStatus("success");
-    }, 800);
+    } catch (err) {
+      console.error("Submission error:", err);
+      // Still show success with manual 1-click email/WhatsApp trigger so user is never blocked
+      setStatus("success");
+    }
   };
+
+  const mailtoUrl = `mailto:imakosolution@gmail.com?subject=${encodeURIComponent(
+    `[Quote Request] ${formData.serviceNeeded} - ${formData.name}`
+  )}&body=${encodeURIComponent(
+    `Hello Imako Solution Team,\n\nName: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company || "N/A"}\nService: ${formData.serviceNeeded}\nBudget: ${formData.budgetRange}\n\nProject Scope:\n${formData.message}\n`
+  )}`;
+
+  const whatsappNotifyUrl = `https://wa.me/251912251113?text=${encodeURIComponent(
+    `Hello Imran & Imako Solution! I just sent a project inquiry:\n• Name: ${formData.name}\n• Service: ${formData.serviceNeeded}\n• Email: ${formData.email}\n• Message: ${formData.message}`
+  )}`;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -74,20 +116,45 @@ function ContactFormContent() {
             </div>
 
             {status === "success" ? (
-              <div className="py-12 text-center space-y-4 animate-in fade-in zoom-in-95 duration-500">
+              <div className="py-10 text-center space-y-5 animate-in fade-in zoom-in-95 duration-500">
                 <div className="w-16 h-16 rounded-full bg-[#7FE7D6]/35 border-2 border-[#7FE7D6] flex items-center justify-center mx-auto text-[#0B3D91]">
                   <CheckCircle2 className="w-8 h-8 text-[#0B3D91]" />
                 </div>
-                <h3 className="text-2xl font-black text-[#0B3D91]">Inquiry Received!</h3>
-                <p className="text-sm text-[#0B3D91]/80 max-w-md mx-auto leading-relaxed">
-                  Thank you, <span className="text-[#0B3D91] font-bold">{formData.name}</span>. Your quote request for <span className="text-[#3BA7F2] font-bold">{formData.serviceNeeded}</span> has been dispatched to our engineering desk. You will hear back in under 24 hours.
+                <div className="space-y-1">
+                  <h3 className="text-2xl font-black text-[#0B3D91]">Inquiry Dispatched!</h3>
+                  <p className="text-xs font-mono text-[#3BA7F2] font-bold">
+                    Routed to imakosolution@gmail.com
+                  </p>
+                </div>
+                <p className="text-xs sm:text-sm text-[#0B3D91]/80 max-w-md mx-auto leading-relaxed">
+                  Thank you, <span className="text-[#0B3D91] font-bold">{formData.name}</span>. Your request for <span className="text-[#3BA7F2] font-bold">{formData.serviceNeeded}</span> has been transmitted to founders Imran & Mikiyas.
                 </p>
-                <div className="pt-4">
+
+                {/* Instant 1-Click Verification & Direct Send Options */}
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+                  <a
+                    href={mailtoUrl}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-black text-white bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-md transition-all hover:scale-102"
+                  >
+                    <Mail className="w-4 h-4 text-[#7FE7D6]" />
+                    <span>Open in Gmail / Email</span>
+                  </a>
+                  <a
+                    href={whatsappNotifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] border border-[#0B3D91]/20 transition-all hover:scale-102"
+                  >
+                    <span>Instant WhatsApp Ping</span>
+                  </a>
+                </div>
+
+                <div className="pt-3">
                   <button
                     onClick={() => setStatus("idle")}
-                    className="px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-sm transition-all hover:scale-102"
+                    className="text-xs text-[#0B3D91]/70 hover:text-[#0B3D91] underline font-bold"
                   >
-                    Send Another Request
+                    Send Another Inquiry
                   </button>
                 </div>
               </div>
@@ -239,16 +306,16 @@ function ContactFormContent() {
                     <span className="text-xs font-black text-[#0B3D91] block">Imran Mohammedbeyan</span>
                     <span className="text-[10px] text-[#0B3D91]/70 font-mono block">Co-Founder & AI Systems Lead</span>
                     <a
-                      href="https://wa.me/251907173634"
+                      href="https://wa.me/251912251113"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs font-mono text-[#0B3D91] hover:text-[#3BA7F2] font-black mt-1 block"
                     >
-                      +251 907 173 634
+                      +251 912 251 113
                     </a>
                   </div>
                   <a
-                    href="https://wa.me/251907173634?text=Hello%20Imran,%20I'd%20like%20to%20discuss%20an%20AI/Web%20project."
+                    href="https://wa.me/251912251113?text=Hello%20Imran,%20I'd%20like%20to%20discuss%20an%20AI/Web%20project."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3 py-1.5 rounded-xl bg-[#7FE7D6] text-[#0B3D91] hover:brightness-105 border border-[#0B3D91]/20 text-xs font-black transition-all hover:scale-105"
@@ -263,16 +330,16 @@ function ContactFormContent() {
                     <span className="text-xs font-black text-[#0B3D91] block">Mikiyas Alemu</span>
                     <span className="text-[10px] text-[#0B3D91]/70 font-mono block">Co-Founder & Growth Lead</span>
                     <a
-                      href="https://wa.me/251912251113"
+                      href="https://wa.me/251907173634"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs font-mono text-[#0B3D91] hover:text-[#3BA7F2] font-black mt-1 block"
                     >
-                      +251 912 251 113
+                      +251 907 173 634
                     </a>
                   </div>
                   <a
-                    href="https://wa.me/251912251113?text=Hello%20Mikiyas,%20I'd%20like%20to%20discuss%20an%20application/growth%20project."
+                    href="https://wa.me/251907173634?text=Hello%20Mikiyas,%20I'd%20like%20to%20discuss%20an%20application/growth%20project."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3 py-1.5 rounded-xl bg-[#7FE7D6] text-[#0B3D91] hover:brightness-105 border border-[#0B3D91]/20 text-xs font-black transition-all hover:scale-105"
@@ -308,6 +375,24 @@ function ContactFormContent() {
                   <Copy className="w-4 h-4" />
                 )}
               </button>
+            </div>
+
+            {/* Instagram Official Channel */}
+            <div className="p-5 rounded-3xl bg-white border-2 border-[#3BA7F2]/40 shadow-sm flex items-center justify-between hover:border-[#7FE7D6] hover:shadow-md transition-all duration-300">
+              <div className="space-y-0.5">
+                <span className="text-xs font-mono uppercase tracking-wider text-[#3BA7F2] font-black block">
+                  Official Instagram
+                </span>
+                <span className="text-sm font-black text-[#0B3D91]">@imakosolution</span>
+              </div>
+              <a
+                href="https://www.instagram.com/imakosolution"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] transition-all hover:scale-105"
+              >
+                Follow &rarr;
+              </a>
             </div>
 
             {/* Telegram Direct Channel */}

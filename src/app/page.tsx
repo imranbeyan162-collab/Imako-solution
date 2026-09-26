@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { 
   Sparkles, 
   ArrowRight, 
@@ -8,170 +9,217 @@ import {
   ArrowUpRight,
   TrendingUp,
   MessageSquareQuote,
-  CheckCircle2
+  CheckCircle2,
+  Layers,
+  FolderGit2,
+  MailCheck,
+  Send,
+  ExternalLink
 } from "lucide-react";
-import { RoiSimulator } from "@/components/RoiSimulator";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SERVICES } from "@/data/servicesData";
 import { FOUNDERS } from "@/data/foundersData";
 
 export default function HomePage() {
   const flagship = SERVICES.find((s) => s.isFlagship);
-  const featuredServices = SERVICES.slice(0, 4);
+
+  // 5 Main Core Destination Pages for the Entrance Hub
+  const pagePortals = [
+    {
+      title: "Services & Capabilities",
+      subtitle: "11 Extensible Services",
+      description: "Flagship Next.js websites, autonomous AI agents, chatbots, and enterprise automations.",
+      href: "/services",
+      badge: "Flagship Lead",
+      badgeColor: "bg-[#0B3D91] text-white",
+      icon: Cpu,
+      accentBorder: "border-[#0B3D91]",
+      buttonText: "Explore Services",
+      gradient: "from-[#0B3D91] to-[#3BA7F2]"
+    },
+    {
+      title: "Client Portfolio",
+      subtitle: "Real Production Systems",
+      description: "Verified case studies: Bisrat Hotel, Nisir Football Academy, Dr. Abdi Dental, Aalam Media.",
+      href: "/portfolio",
+      badge: "Live Projects",
+      badgeColor: "bg-[#7FE7D6] text-[#0B3D91]",
+      icon: FolderGit2,
+      accentBorder: "border-[#7FE7D6]",
+      buttonText: "View Case Studies",
+      gradient: "from-[#3BA7F2] to-[#7FE7D6]"
+    },
+    {
+      title: "Co-Founders & Story",
+      subtitle: "Imran & Mikiyas",
+      description: "Meet the engineering minds and human disciplines behind Imako Solution.",
+      href: "/about",
+      badge: "Leadership",
+      badgeColor: "bg-[#3BA7F2] text-white",
+      icon: Users,
+      accentBorder: "border-[#3BA7F2]",
+      buttonText: "Read Founder Bios",
+      gradient: "from-[#0B3D91] to-[#7FE7D6]"
+    },
+    {
+      title: "Our Team",
+      subtitle: "Specialized Builders",
+      description: "System architects, AI workflow engineers, full-stack builders, and creative growth leads.",
+      href: "/team",
+      badge: "The Squad",
+      badgeColor: "bg-[#E8F6FF] text-[#0B3D91] border border-[#3BA7F2]/40",
+      icon: Layers,
+      accentBorder: "border-[#3BA7F2]",
+      buttonText: "Meet the Team",
+      gradient: "from-[#3BA7F2] to-[#0B3D91]"
+    },
+    {
+      title: "Direct Quote & Contact",
+      subtitle: "Inquiries <24h",
+      description: "Submit project scope directly to founders or connect via WhatsApp & Telegram.",
+      href: "/contact",
+      badge: "Fast Routing",
+      badgeColor: "bg-[#7FE7D6] text-[#0B3D91]",
+      icon: MailCheck,
+      accentBorder: "border-[#7FE7D6]",
+      buttonText: "Get Project Quote",
+      gradient: "from-[#0B3D91] via-[#3BA7F2] to-[#7FE7D6]"
+    }
+  ];
 
   return (
     <main className="min-h-screen bg-[#E8F6FF] text-[#0B3D91]">
-      {/* 1. Hero Section: Ocean Breeze Brand Colors (#0B3D91, #3BA7F2, #7FE7D6, #E8F6FF) */}
-      <section className="relative overflow-hidden pt-16 pb-20 md:pt-24 md:pb-28 border-b-2 border-[#CBE5FC] bg-[#E8F6FF]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto space-y-6">
-            {/* Tagline Pill in Mint Aqua #7FE7D6 & Deep Ocean #0B3D91 */}
-            <RevealOnScroll direction="down" delayMs={50}>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono bg-[#7FE7D6] border border-[#0B3D91]/20 text-[#0B3D91] shadow-xs hover:scale-105 transition-all duration-300">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#0B3D91] animate-ping" />
-                <span className="font-black">IMAKO SOLUTION</span>
-                <span className="text-[#0B3D91]/60">•</span>
-                <span className="font-bold uppercase tracking-wider">
-                  AI powered solution for real world problems
-                </span>
-              </div>
-            </RevealOnScroll>
-
-            {/* Elevated Headline */}
-            <RevealOnScroll direction="up" delayMs={150}>
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-[#0B3D91] leading-[1.12]">
-                Engineering Autonomous Systems to{" "}
-                <span className="bg-gradient-to-r from-[#0B3D91] via-[#3BA7F2] to-[#7FE7D6] bg-clip-text text-transparent hover:brightness-110 transition-all duration-300">
-                  Accelerate Enterprise Velocity
-                </span>
-              </h1>
-            </RevealOnScroll>
-
-            {/* Elevated Subtitle */}
-            <RevealOnScroll direction="up" delayMs={250}>
-              <p className="text-base sm:text-xl text-[#0B3D91]/80 max-w-3xl mx-auto leading-relaxed font-normal">
-                Imako Solution builds high-performance digital platforms, intelligent workflow automations, and bespoke AI architectures designed to conquer operational bottlenecks and scale organizational impact.
-              </p>
-            </RevealOnScroll>
-
-            {/* CTAs with Equal Proportions of the Palette */}
-            <RevealOnScroll direction="up" delayMs={350}>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <Link
-                  href="/services"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-sm font-black text-white bg-gradient-to-r from-[#0B3D91] via-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-lg shadow-[#0B3D91]/25 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:translate-y-0 group"
-                >
-                  <span>Explore All 11 Services</span>
-                  <ArrowRight className="w-4 h-4 text-[#7FE7D6] group-hover:translate-x-1.5 transition-transform duration-200" />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-sm font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] border border-[#0B3D91]/20 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md active:translate-y-0 shadow-xs group"
-                >
-                  <span>Request a Consultation</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#0B3D91] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200" />
-                </Link>
-              </div>
-            </RevealOnScroll>
-
-            {/* Stats & Highlights Strip in Balanced 4 Colors */}
-            <div className="pt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto border-t-2 border-[#CBE5FC] mt-12 text-left">
-              {[
-                { val: "10,000+", label: "Manual Hours Eliminated", color: "text-[#0B3D91]", bg: "bg-white", border: "border-[#0B3D91]" },
-                { val: "7+", label: "Live Production Platforms", color: "text-[#3BA7F2]", bg: "bg-white", border: "border-[#3BA7F2]" },
-                { val: "85%", label: "Average Task Acceleration", color: "text-[#0B3D91]", bg: "bg-[#7FE7D6]/25", border: "border-[#7FE7D6]" },
-                { val: "24/7", label: "Continuous Execution", color: "text-[#0B3D91]", bg: "bg-white", border: "border-[#CBE5FC]" },
-              ].map((stat, i) => (
-                <RevealOnScroll key={i} direction="up" delayMs={400 + i * 80}>
-                  <div className={`p-4 rounded-2xl ${stat.bg} border-2 ${stat.border} shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 cursor-default`}>
-                    <div className={`text-2xl sm:text-3xl font-black ${stat.color} font-mono`}>{stat.val}</div>
-                    <p className="text-xs text-[#0B3D91] font-bold mt-1">{stat.label}</p>
-                  </div>
-                </RevealOnScroll>
-              ))}
+      {/* 1. Minimal Header & Identity */}
+      <section className="pt-12 pb-8 md:pt-16 md:pb-10 border-b-2 border-[#CBE5FC] bg-[#E8F6FF]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <RevealOnScroll direction="down" delayMs={50}>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono bg-[#7FE7D6] text-[#0B3D91] border border-[#0B3D91]/20 font-bold shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-[#0B3D91] animate-ping" />
+              <span>IMAKO SOLUTION</span>
+              <span>•</span>
+              <span className="uppercase">AI Native Firm</span>
             </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll direction="up" delayMs={100}>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#0B3D91] leading-tight max-w-4xl mx-auto">
+              AI Powered Solution for{" "}
+              <span className="bg-gradient-to-r from-[#0B3D91] via-[#3BA7F2] to-[#7FE7D6] bg-clip-text text-transparent">
+                Real World Problems
+              </span>
+            </h1>
+          </RevealOnScroll>
+
+          <RevealOnScroll direction="up" delayMs={150}>
+            <p className="text-sm sm:text-base text-[#0B3D91]/80 max-w-2xl mx-auto font-medium">
+              Select a destination below to explore our services, review live client systems, meet the founders, or receive a direct quote.
+            </p>
+          </RevealOnScroll>
+        </div>
+      </section>
+
+      {/* 2. THE PAGE PORTAL HUB: Pages Appear First as Primary Cards */}
+      <section className="py-12 md:py-16 bg-white border-b-2 border-[#CBE5FC]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-8 pb-3 border-b-2 border-[#CBE5FC]">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-black text-[#0B3D91] tracking-tight">
+                Where would you like to go?
+              </h2>
+              <p className="text-xs text-[#0B3D91]/70 font-mono">
+                Click any portal below to jump straight to that section.
+              </p>
+            </div>
+            <span className="hidden sm:inline-block text-xs font-mono font-bold text-[#3BA7F2]">
+              5 Core Portals
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {pagePortals.map((portal, idx) => {
+              const IconComponent = portal.icon;
+              return (
+                <RevealOnScroll key={portal.href} direction="up" delayMs={60 + idx * 70}>
+                  <Link
+                    href={portal.href}
+                    className={`group rounded-3xl p-6 sm:p-7 bg-[#E8F6FF] border-2 border-[#CBE5FC] hover:${portal.accentBorder} shadow-xs hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between h-full space-y-5`}
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div className="w-12 h-12 rounded-2xl bg-white border-2 border-[#CBE5FC] group-hover:border-[#7FE7D6] flex items-center justify-center text-[#0B3D91] group-hover:bg-[#7FE7D6] transition-colors shadow-2xs">
+                          <IconComponent className="w-6 h-6 text-[#0B3D91]" />
+                        </div>
+                        <span className={`text-[10px] font-mono font-black px-2.5 py-0.5 rounded-full ${portal.badgeColor}`}>
+                          {portal.badge}
+                        </span>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-black text-[#0B3D91] group-hover:text-[#3BA7F2] transition-colors">
+                          {portal.title}
+                        </h3>
+                        <p className="text-xs font-mono text-[#3BA7F2] font-bold">
+                          {portal.subtitle}
+                        </p>
+                      </div>
+
+                      <p className="text-xs text-[#0B3D91]/80 leading-relaxed">
+                        {portal.description}
+                      </p>
+                    </div>
+
+                    <div className="pt-2 border-t border-[#CBE5FC]/80 flex items-center justify-between text-xs font-black text-[#0B3D91] group-hover:text-[#3BA7F2] transition-colors">
+                      <span>{portal.buttonText}</span>
+                      <ArrowRight className="w-4 h-4 text-[#3BA7F2] group-hover:translate-x-1.5 transition-transform duration-200" />
+                    </div>
+                  </Link>
+                </RevealOnScroll>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* 2. Elevated Mission Statement Section */}
-      <section className="py-20 bg-white border-b-2 border-[#CBE5FC] relative">
-        <RevealOnScroll direction="scale" durationMs={800}>
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-bold bg-[#7FE7D6] text-[#0B3D91] border border-[#0B3D91]/20 shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-[#0B3D91]" />
-              <span>OUR MISSION</span>
-            </div>
-
-            <h2 className="text-2xl sm:text-4xl font-black text-[#0B3D91] tracking-tight leading-snug">
-              &ldquo;At Imako Solution, we architect autonomous intelligence and high-performance digital systems that liberate enterprise capacity, compress operational latency, and multiply organizational throughput.&rdquo;
-            </h2>
-
-            <p className="text-sm sm:text-base text-[#0B3D91]/75 max-w-2xl mx-auto leading-relaxed">
-              Founded July 27, 2026, we believe ambitious businesses should not be constrained by mechanical, repetitive overhead. We apply cutting-edge software and agentic AI to solve real-world operational friction.
-            </p>
-          </div>
-        </RevealOnScroll>
-      </section>
-
-      {/* 3. Flagship Service Spotlight: Website Development */}
+      {/* 3. Flagship Lead Service: Website Development (Minimal High-Impact) */}
       {flagship && (
-        <section className="py-20 bg-[#E8F6FF] border-b-2 border-[#CBE5FC]">
+        <section className="py-12 md:py-16 bg-[#E8F6FF] border-b-2 border-[#CBE5FC]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <RevealOnScroll direction="up" durationMs={750}>
-              <div className="rounded-3xl p-8 sm:p-12 border-2 border-[#3BA7F2] bg-white shadow-xl hover:shadow-2xl transition-all duration-500 relative overflow-hidden group">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                  <div className="lg:col-span-7 space-y-5">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold bg-[#7FE7D6] text-[#0B3D91] border border-[#0B3D91]/20 shadow-xs">
-                      <span>★ FLAGSHIP & LEAD SERVICE</span>
-                    </div>
-                    <h2 className="text-3xl sm:text-4xl font-black text-[#0B3D91] tracking-tight group-hover:text-[#3BA7F2] transition-colors duration-300">
-                      Website Development & Digital Commerce Engines
+            <RevealOnScroll direction="up">
+              <div className="rounded-3xl p-6 sm:p-10 border-2 border-[#3BA7F2] bg-white shadow-lg space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="space-y-1">
+                    <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-[#7FE7D6] text-[#0B3D91] font-bold inline-block">
+                      ★ LEAD FLAGSHIP SERVICE
+                    </span>
+                    <h2 className="text-2xl sm:text-3xl font-black text-[#0B3D91]">
+                      Website Development & Digital Commerce
                     </h2>
-                    <p className="text-sm sm:text-base text-[#0B3D91]/80 leading-relaxed">
-                      {flagship.detailedDescription}
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
-                      {flagship.capabilities.map((cap, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-xs font-bold text-[#0B3D91] hover:text-[#3BA7F2] transition-colors">
-                          <CheckCircle2 className="w-4 h-4 text-[#7FE7D6] flex-shrink-0" />
-                          <span>{cap}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="pt-4 flex flex-wrap items-center gap-3">
-                      <Link
-                        href="/contact?service=Website%20Development"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-md shadow-[#3BA7F2]/25 transition-all duration-300 transform hover:-translate-y-1 group/btn"
-                      >
-                        <span>Request Web Development Quote</span>
-                        <ArrowRight className="w-4 h-4 text-[#7FE7D6] group-hover/btn:translate-x-1.5 transition-transform duration-200" />
-                      </Link>
-                      <Link
-                        href="/portfolio"
-                        className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold text-[#0B3D91] bg-[#7FE7D6]/30 hover:bg-[#7FE7D6] border border-[#7FE7D6] shadow-xs transition-all duration-300 transform hover:-translate-y-1"
-                      >
-                        <span>See Live Case Studies</span>
-                      </Link>
-                    </div>
                   </div>
+                  <Link
+                    href="/contact?service=Website%20Development"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-black text-white bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-md transition-all self-start sm:self-auto"
+                  >
+                    <span>Request Web Quote</span>
+                    <ArrowRight className="w-4 h-4 text-[#7FE7D6]" />
+                  </Link>
+                </div>
 
-                  <div className="lg:col-span-5 bg-[#E8F6FF] rounded-2xl p-6 border-2 border-[#CBE5FC] shadow-sm space-y-4 hover:shadow-md transition-all duration-300">
-                    <h3 className="text-xs font-mono uppercase tracking-wider text-[#0B3D91] font-black">
-                      Flagship Deliverables
-                    </h3>
-                    <div className="space-y-2.5">
-                      {flagship.deliverables.map((del, i) => (
-                        <div key={i} className="p-3 rounded-xl bg-white border border-[#CBE5FC] text-xs text-[#0B3D91] font-semibold flex items-center justify-between hover:border-[#7FE7D6] transition-colors">
-                          <span>{del}</span>
-                          <span className="text-[#3BA7F2] font-black font-mono">Included</span>
-                        </div>
-                      ))}
+                <p className="text-xs sm:text-sm text-[#0B3D91]/80 leading-relaxed max-w-3xl">
+                  {flagship.shortDescription}
+                </p>
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                  {[
+                    "Next.js & React Full-Stack",
+                    "Sub-Second Page Speeds",
+                    "Telebirr & CBE Payment Sync",
+                    "Autonomous Lead Capture"
+                  ].map((item, i) => (
+                    <div key={i} className="p-2.5 rounded-xl bg-[#E8F6FF] border border-[#CBE5FC] text-xs font-bold text-[#0B3D91] flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#7FE7D6] flex-shrink-0" />
+                      <span className="truncate">{item}</span>
                     </div>
-                    <div className="p-3.5 rounded-xl bg-[#7FE7D6]/35 border border-[#7FE7D6] text-[11px] text-[#0B3D91] font-bold">
-                      ⚡ Sub-second response times • Telebirr & CBE digital payment audit integration ready.
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </RevealOnScroll>
@@ -179,165 +227,91 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* 4. Interactive Project ROI & Time-Saved Simulator */}
-      <RevealOnScroll direction="up" durationMs={700}>
-        <RoiSimulator />
-      </RevealOnScroll>
-
-      {/* 5. Services Teaser Grid */}
-      <section className="py-20 bg-white border-b-2 border-[#CBE5FC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll direction="up" delayMs={50}>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#7FE7D6] text-[#0B3D91] border border-[#0B3D91]/20 mb-3 shadow-xs">
-                  <Cpu className="w-3.5 h-3.5" />
-                  <span>FULL-SPECTRUM CAPABILITIES</span>
-                </div>
-                <h2 className="text-3xl sm:text-4xl font-black text-[#0B3D91] tracking-tight">
-                  Explore All 11 Services
-                </h2>
-              </div>
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-2 text-sm font-black text-[#3BA7F2] hover:text-[#0B3D91] transition-colors group"
-              >
-                <span>View Combined Services Page</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-200" />
-              </Link>
-            </div>
-          </RevealOnScroll>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredServices.map((svc, sIdx) => (
-              <RevealOnScroll key={svc.id} direction="up" delayMs={100 + sIdx * 80}>
-                <div
-                  className="p-6 rounded-2xl bg-[#E8F6FF] border-2 border-[#CBE5FC] hover:border-[#7FE7D6] shadow-xs hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between space-y-4 group h-full"
-                >
-                  <div className="space-y-3">
-                    <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white text-[#0B3D91] border border-[#3BA7F2]/30 font-bold">
-                      {svc.category}
-                    </span>
-                    <h3 className="text-lg font-black text-[#0B3D91] group-hover:text-[#3BA7F2] transition-colors duration-200">
-                      {svc.title}
-                    </h3>
-                    <p className="text-xs text-[#0B3D91]/75 line-clamp-3 leading-relaxed">
-                      {svc.shortDescription}
-                    </p>
-                  </div>
-                  <Link
-                    href="/services"
-                    className="text-xs font-black text-[#0B3D91] group-hover:text-[#3BA7F2] inline-flex items-center gap-1.5 pt-2"
-                  >
-                    <span>Learn more</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#3BA7F2] group-hover:translate-x-1 transition-transform duration-200" />
-                  </Link>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Meet Founders Teaser */}
-      <section className="py-20 bg-[#E8F6FF] border-b-2 border-[#CBE5FC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll direction="up">
-            <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold bg-[#7FE7D6] text-[#0B3D91] border border-[#0B3D91]/20 shadow-xs">
-                <Users className="w-3.5 h-3.5" />
-                <span>CO-FOUNDERS</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#0B3D91] tracking-tight">
-                Meet the Minds Behind Imako
+      {/* 4. Co-Founders Fast Snapshot (Minimal & Authentic) */}
+      <section className="py-12 md:py-16 bg-white border-b-2 border-[#CBE5FC]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="flex items-center justify-between border-b-2 border-[#CBE5FC] pb-3">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-black text-[#0B3D91] tracking-tight">
+                Meet the Leadership
               </h2>
-              <p className="text-xs sm:text-sm text-[#0B3D91]/75">
-                Listed in alphabetical order: Imran Mohammedbeyan & Mikiyas Alemu.
+              <p className="text-xs text-[#0B3D91]/70 font-mono">
+                Co-Founders in alphabetical order: Imran & Mikiyas
               </p>
             </div>
-          </RevealOnScroll>
+            <Link
+              href="/about"
+              className="text-xs font-black text-[#3BA7F2] hover:text-[#0B3D91] transition-colors"
+            >
+              Full Story & Gallery &rarr;
+            </Link>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {FOUNDERS.map((f, fIdx) => (
-              <RevealOnScroll key={f.id} direction={fIdx === 0 ? "left" : "right"} delayMs={150}>
-                <div
-                  className="rounded-3xl p-7 bg-white border-2 border-[#CBE5FC] shadow-sm hover:border-[#7FE7D6] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 space-y-4 group"
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-xl font-black text-[#0B3D91] group-hover:text-[#3BA7F2] transition-colors">{f.name}</h3>
-                      <p className="text-xs text-[#3BA7F2] font-mono font-bold">{f.role}</p>
-                    </div>
-                    <span className="w-8 h-8 rounded-full bg-[#7FE7D6]/35 border border-[#7FE7D6] flex items-center justify-center text-xs font-black text-[#0B3D91] group-hover:bg-[#7FE7D6] transition-colors">
-                      {f.name.split(" ")[0][0]}
-                    </span>
-                  </div>
-                  <p className="text-xs text-[#0B3D91]/80 italic border-l-2 border-[#3BA7F2] pl-3">
-                    &ldquo;{f.quote}&rdquo;
-                  </p>
-                  <div className="p-3 rounded-xl bg-[#E8F6FF] border border-[#CBE5FC] group-hover:border-[#7FE7D6] transition-colors">
-                    <span className="text-[11px] font-black text-[#0B3D91] block mb-1">Human Element:</span>
-                    <p className="text-xs text-[#0B3D91]/75 line-clamp-2">
-                      {f.humanSide.description}
-                    </p>
-                  </div>
-                  <Link
-                    href="/about"
-                    className="inline-flex items-center gap-1.5 text-xs font-black text-[#0B3D91] hover:text-[#3BA7F2] transition-colors"
-                  >
-                    <span>Explore full bio & photo gallery &rarr;</span>
-                  </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {FOUNDERS.map((founder) => (
+              <div
+                key={founder.id}
+                className="p-5 sm:p-6 rounded-3xl bg-[#E8F6FF] border-2 border-[#CBE5FC] hover:border-[#7FE7D6] shadow-xs hover:shadow-md transition-all flex flex-col sm:flex-row items-center gap-5"
+              >
+                <div className="relative w-24 h-24 rounded-2xl overflow-hidden bg-white border-2 border-[#3BA7F2] flex-shrink-0 shadow-xs">
+                  <Image
+                    src={founder.avatar}
+                    alt={founder.name}
+                    fill
+                    className="object-cover object-top"
+                  />
                 </div>
-              </RevealOnScroll>
+                <div className="space-y-1.5 text-center sm:text-left flex-1 min-w-0">
+                  <h3 className="text-lg font-black text-[#0B3D91]">{founder.name}</h3>
+                  <p className="text-xs font-mono text-[#3BA7F2] font-bold">{founder.role}</p>
+                  <p className="text-xs text-[#0B3D91]/75 line-clamp-2">
+                    {founder.humanSide.title}
+                  </p>
+                  <div className="pt-1">
+                    <a
+                      href={founder.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-mono font-bold text-[#0B3D91] hover:text-[#3BA7F2] inline-flex items-center gap-1"
+                    >
+                      <span>WA: {founder.phoneDisplay} &rarr;</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 7. Testimonials Placeholder Section */}
-      <section className="py-20 bg-white border-b-2 border-[#CBE5FC]">
-        <RevealOnScroll direction="scale" durationMs={700}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#E8F6FF] text-[#0B3D91] border border-[#3BA7F2]/30 shadow-xs">
-              <MessageSquareQuote className="w-3.5 h-3.5 text-[#3BA7F2]" />
-              <span>CLIENT REPUTATION</span>
-            </div>
-            <h2 className="text-3xl font-black text-[#0B3D91] tracking-tight">
-              Client Testimonials
-            </h2>
-            <div className="max-w-2xl mx-auto p-8 rounded-3xl bg-[#E8F6FF] border-2 border-dashed border-[#3BA7F2]/40 space-y-3 hover:border-[#7FE7D6] transition-colors duration-300">
-              <p className="text-sm text-[#0B3D91]/85 italic leading-relaxed">
-                &ldquo;Formal executive quotes and video endorsements from our recent partners (Bisrat Hotel, Nisir Football Academy, Eyana Hotel, Dr. Abdi Clinic) are currently being finalized for publication.&rdquo;
-              </p>
-              <span className="text-xs font-mono text-[#0B3D91] block font-black">
-                — Verified Client Testimonials Coming Soon
-              </span>
-            </div>
+      {/* 5. Minimal Direct CTA Banner */}
+      <section className="py-12 bg-gradient-to-r from-[#0B3D91] via-[#0B3D91] to-[#3BA7F2] text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center space-y-4">
+          <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+            Ready to Build Your Next Solution?
+          </h2>
+          <p className="text-xs sm:text-sm text-[#E8F6FF]/90 max-w-md mx-auto">
+            Direct response within 24 hours. Connect with our founders on WhatsApp, Telegram, or email.
+          </p>
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] shadow-lg transition-all transform hover:-translate-y-0.5"
+            >
+              <span>Get a Direct Project Quote</span>
+              <ArrowRight className="w-4 h-4 text-[#0B3D91]" />
+            </Link>
+            <a
+              href="https://www.instagram.com/imakosolution"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-all"
+            >
+              <span>Follow @imakosolution</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
-        </RevealOnScroll>
-      </section>
-
-      {/* 8. Bottom CTA Banner */}
-      <section className="py-20 bg-gradient-to-r from-[#0B3D91] via-[#0B3D91] to-[#3BA7F2] text-white">
-        <RevealOnScroll direction="up" durationMs={700}>
-          <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-              Ready to Automate & Scale Your Business?
-            </h2>
-            <p className="text-sm sm:text-base text-[#E8F6FF]/90 max-w-xl mx-auto">
-              Get in touch for a bespoke technical architecture blueprint and project quote. No pricing ambiguity — pure engineering clarity.
-            </p>
-            <div className="pt-2">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-sm font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl group"
-              >
-                <span>Get Your Project Quote Now</span>
-                <ArrowRight className="w-4 h-4 text-[#0B3D91] group-hover:translate-x-1.5 transition-transform duration-200" />
-              </Link>
-            </div>
-          </div>
-        </RevealOnScroll>
+        </div>
       </section>
     </main>
   );

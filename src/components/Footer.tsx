@@ -44,8 +44,8 @@ export function Footer() {
     },
     {
       name: "Instagram",
-      handle: "@imako.digital.agency",
-      url: "https://www.instagram.com/imako.digital.agency",
+      handle: "@imakosolution",
+      url: "https://www.instagram.com/imakosolution",
       color: "text-[#0B3D91] hover:text-[#3BA7F2]"
     },
     {
@@ -173,16 +173,16 @@ export function Footer() {
                 <div className="min-w-0">
                   <span className="text-[10px] text-[#3BA7F2] uppercase block font-mono font-bold">Founder Line 1 (Imran)</span>
                   <a
-                    href="https://wa.me/251907173634"
+                    href="https://wa.me/251912251113"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-mono text-[#0B3D91] hover:text-[#3BA7F2] font-bold transition-colors"
                   >
-                    +251 907 173 634
+                    +251 912 251 113
                   </a>
                 </div>
                 <a
-                  href="https://wa.me/251907173634"
+                  href="https://wa.me/251912251113"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-1.5 rounded-lg bg-[#7FE7D6]/40 text-[#0B3D91] hover:bg-[#7FE7D6]"
@@ -196,16 +196,16 @@ export function Footer() {
                 <div className="min-w-0">
                   <span className="text-[10px] text-[#0B3D91] uppercase block font-mono font-bold">Founder Line 2 (Mikiyas)</span>
                   <a
-                    href="https://wa.me/251912251113"
+                    href="https://wa.me/251907173634"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-mono text-[#0B3D91] hover:text-[#3BA7F2] font-bold transition-colors"
                   >
-                    +251 912 251 113
+                    +251 907 173 634
                   </a>
                 </div>
                 <a
-                  href="https://wa.me/251912251113"
+                  href="https://wa.me/251907173634"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-1.5 rounded-lg bg-[#7FE7D6]/40 text-[#0B3D91] hover:bg-[#7FE7D6]"

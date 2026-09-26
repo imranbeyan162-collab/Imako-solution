@@ -76,10 +76,19 @@ export function ChatbotWidget() {
 
     if (q.includes("quote") || q.includes("consult") || q.includes("hire") || q.includes("price") || q.includes("cost")) {
       return {
-        reply: "We tailor every solution to your exact operational requirements. You can submit a direct quote request on our Contact page or speak directly with our founders on WhatsApp (+251 907 173 634 / +251 912 251 113) or Telegram.",
+        reply: "We tailor every solution to your exact operational requirements. You can submit a direct quote request on our Contact page or speak directly with our founders on WhatsApp (+251 912 251 113 / +251 907 173 634), Telegram, or Instagram (@imakosolution).",
         actions: [
           { label: "Open Contact Form", action: "Open quote form" },
           { label: "Direct WhatsApp", action: "Open WhatsApp" }
+        ]
+      };
+    }
+
+    if (q.includes("instagram") || q.includes("insta") || q.includes("social")) {
+      return {
+        reply: "You can follow our official Instagram @imakosolution for design updates, case studies, and engineering breakdowns!",
+        actions: [
+          { label: "Open Instagram", action: "Open Instagram" }
         ]
       };
     }
@@ -89,7 +98,7 @@ export function ChatbotWidget() {
       actions: [
         { label: "WhatsApp Direct", action: "Open WhatsApp" },
         { label: "Telegram Direct", action: "Open Telegram" },
-        { label: "Explore Services", action: "Tell me about your services" }
+        { label: "Instagram @imakosolution", action: "Open Instagram" }
       ]
     };
   };
@@ -110,12 +119,17 @@ export function ChatbotWidget() {
     setIsTyping(true);
 
     if (text === "Open WhatsApp") {
-      window.open("https://wa.me/251907173634?text=Hello%20Imako%20Solution,%20I%20chatted%20with%20your%20AI%20Assistant%20and%20want%20to%20connect.", "_blank");
+      window.open("https://wa.me/251912251113?text=Hello%20Imran%20&%20Mikiyas,%20I%20chatted%20with%20your%20AI%20Assistant%20and%20want%20to%20connect.", "_blank");
       setIsTyping(false);
       return;
     }
     if (text === "Open Telegram") {
       window.open("https://t.me/imakosolution", "_blank");
+      setIsTyping(false);
+      return;
+    }
+    if (text === "Open Instagram") {
+      window.open("https://www.instagram.com/imakosolution", "_blank");
       setIsTyping(false);
       return;
     }

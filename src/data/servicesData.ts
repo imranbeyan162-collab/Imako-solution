@@ -58,20 +58,21 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     id: "ai-agents",
-    title: "AI Agents",
+    title: "Autonomous AI Agents",
     category: "AI & Intelligence",
+    badge: "Autonomous Software Systems",
     shortDescription:
-      "Goal-driven autonomous agents capable of multi-step problem solving, tool use, research synthesis, and executive decision support.",
+      "Goal-driven autonomous software agents that decompose objectives, call external tools/APIs, and execute complex multi-step workflows independently.",
     detailedDescription:
-      "Moving beyond simple prompts, our agentic AI architectures can plan, execute API calls, access private vector knowledge bases, and iteratively verify their own work before delivering completed tasks.",
+      "Moving beyond simple conversational prompts, our agentic architectures plan, call APIs, access vector knowledge bases, and iteratively verify their own work before delivering completed tasks.",
     capabilities: [
-      "Agentic Goal Decomposition & Planning",
-      "Tool Calling & Database Interfacing",
-      "Autonomous Research & Synthesis",
+      "Agentic Goal Planning & Self-Correction",
+      "External Tool Calling & API Interfacing",
+      "Autonomous Market & Code Research",
       "Multi-Agent Collaborative Networks"
     ],
     deliverables: [
-      "Autonomous Agent System",
+      "Autonomous Agent System Deployment",
       "Safe Sandbox Execution Environment",
       "Telemetry & Observability Dashboard"
     ]
@@ -102,10 +103,11 @@ export const SERVICES: ServiceItem[] = [
     id: "ai-consultancy",
     title: "AI Consultancy & Strategy",
     category: "AI & Intelligence",
+    badge: "Executive Advisory & Audits",
     shortDescription:
-      "Executive roadmaps, technical feasibility audits, and vendor-neutral architectural guidance to accelerate high-ROI AI adoption.",
+      "Strategic enterprise advisory, tech feasibility audits, and implementation blueprints to accelerate safe, high-ROI AI adoption.",
     detailedDescription:
-      "We partner with founders and business leaders to identify where artificial intelligence yields immediate competitive advantages, calculating exact time-saved models and designing safe adoption roadmaps.",
+      "We partner with founders and business leaders to identify where artificial intelligence yields immediate competitive advantages, conducting technical feasibility audits and designing safe adoption roadmaps.",
     capabilities: [
       "Enterprise AI Readiness Audit",
       "Workflow ROI & Cost-Benefit Modeling",
