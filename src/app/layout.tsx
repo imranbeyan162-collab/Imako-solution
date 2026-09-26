@@ -39,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-[#F8FAFC] text-[#0F172A] antialiased selection:bg-[#38BDF8]/30 selection:text-[#0284C7] flex flex-col justify-between">
+      <body className="min-h-screen bg-[#E8F6FF] text-[#0B3D91] antialiased selection:bg-[#7FE7D6] selection:text-[#0B3D91] flex flex-col justify-between">
         {/* Persistent Global Header */}
         <Header />
 

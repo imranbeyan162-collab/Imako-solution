@@ -25,11 +25,11 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-white/95 border-b border-slate-200 shadow-sm transition-all">
+    <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-[#E8F6FF]/90 border-b border-[#3BA7F2]/25 shadow-xs transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand / Logo */}
         <Link href="/" className="flex items-center space-x-3 group">
-          <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-gradient-to-tr from-sky-50 via-white to-red-50 border border-slate-200 flex items-center justify-center p-1.5 shadow-sm group-hover:border-[#0284C7] transition-colors">
+          <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-white border border-[#3BA7F2]/40 flex items-center justify-center p-1.5 shadow-sm group-hover:border-[#7FE7D6] transition-colors">
             <Image
               src="/imako-logo.png"
               alt="Imako Solution Logo"
@@ -40,25 +40,25 @@ export function Header() {
                 (e.target as HTMLElement).style.display = "none";
               }}
             />
-            <Cpu className="w-5 h-5 text-[#0284C7] hidden [only-child]:block" />
+            <Cpu className="w-5 h-5 text-[#0B3D91] hidden [only-child]:block" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <span className="text-xl font-black tracking-tight text-slate-900 flex items-center gap-1.5">
-                IMAKO <span className="text-[#0284C7]">SOLUTION</span>
+              <span className="text-xl font-black tracking-tight text-[#0B3D91] flex items-center gap-1.5">
+                IMAKO <span className="text-[#3BA7F2]">SOLUTION</span>
               </span>
-              <span className="hidden lg:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-100 text-[#DC2626] border border-red-200">
+              <span className="hidden lg:inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#7FE7D6] text-[#0B3D91] border border-[#0B3D91]/20">
                 AI NATIVE
               </span>
             </div>
-            <p className="text-[11px] text-slate-500 tracking-wide font-mono hidden sm:block">
+            <p className="text-[11px] text-[#0B3D91]/70 tracking-wide font-mono hidden sm:block">
               AI powered solution for real world problems
             </p>
           </div>
         </Link>
 
         {/* Desktop Navigation across 6 fixed pages */}
-        <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-semibold">
+        <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-bold">
           {navLinks.map((link) => {
             const active = isActive(link.href);
             return (
@@ -67,13 +67,13 @@ export function Header() {
                 href={link.href}
                 className={`transition-colors py-1 relative ${
                   active
-                    ? "text-[#0284C7] font-bold"
-                    : "text-slate-600 hover:text-[#0284C7]"
+                    ? "text-[#0B3D91] font-black"
+                    : "text-[#0B3D91]/75 hover:text-[#3BA7F2]"
                 }`}
               >
                 {link.name}
                 {active && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0284C7] rounded-full shadow-sm" />
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#7FE7D6] rounded-full shadow-sm" />
                 )}
               </Link>
             );
@@ -84,11 +84,11 @@ export function Header() {
         <div className="hidden sm:flex items-center space-x-3">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0284C7] via-[#0EA5E9] to-[#EF4444] hover:brightness-105 shadow-md shadow-sky-500/20 transition-all transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0B3D91] via-[#3BA7F2] to-[#7FE7D6] hover:brightness-105 shadow-md shadow-[#3BA7F2]/25 transition-all transform hover:-translate-y-0.5"
           >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Get a Quote</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <Sparkles className="w-3.5 h-3.5 text-[#7FE7D6]" />
+            <span className="text-white">Get a Quote</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-white" />
           </Link>
         </div>
 
@@ -96,7 +96,7 @@ export function Header() {
         <div className="flex md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+            className="p-2 rounded-lg text-[#0B3D91] hover:bg-white"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -106,7 +106,7 @@ export function Header() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3 shadow-lg">
+        <div className="md:hidden border-b border-[#3BA7F2]/30 bg-[#E8F6FF] px-4 pt-3 pb-6 space-y-3 shadow-lg">
           {navLinks.map((link) => {
             const active = isActive(link.href);
             return (
@@ -114,10 +114,10 @@ export function Header() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block text-sm font-semibold py-2 px-3 rounded-lg transition-colors ${
+                className={`block text-sm font-bold py-2 px-3 rounded-lg transition-colors ${
                   active
-                    ? "bg-sky-50 text-[#0284C7] border border-sky-200"
-                    : "text-slate-700 hover:bg-slate-100"
+                    ? "bg-[#7FE7D6]/30 text-[#0B3D91] border border-[#7FE7D6]"
+                    : "text-[#0B3D91] hover:bg-white"
                 }`}
               >
                 {link.name}
@@ -128,7 +128,7 @@ export function Header() {
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center block py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#0284C7] via-[#0EA5E9] to-[#EF4444] shadow-md"
+              className="w-full text-center block py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#0B3D91] via-[#3BA7F2] to-[#7FE7D6] shadow-md"
             >
               Get a Quote / Consultation
             </Link>
