@@ -109,7 +109,6 @@ export function ChatbotWidget() {
     setInputValue("");
     setIsTyping(true);
 
-    // Check for direct redirect actions
     if (text === "Open WhatsApp") {
       window.open("https://wa.me/251907173634?text=Hello%20Imako%20Solution,%20I%20chatted%20with%20your%20AI%20Assistant%20and%20want%20to%20connect.", "_blank");
       setIsTyping(false);
@@ -151,31 +150,31 @@ export function ChatbotWidget() {
     <div className="fixed bottom-6 right-6 z-50 select-none">
       {/* Expanded Chat Window */}
       {isOpen && (
-        <div className="mb-3 w-80 sm:w-96 rounded-2xl bg-[#0D131F]/98 backdrop-blur-2xl border border-sky-400/30 shadow-[0_12px_45px_rgba(0,0,0,0.8),0_0_30px_rgba(56,189,248,0.2)] overflow-hidden flex flex-col h-[520px] animate-in fade-in slide-in-from-bottom-5 duration-200">
+        <div className="mb-3 w-80 sm:w-96 rounded-2xl bg-white border border-slate-200 shadow-2xl overflow-hidden flex flex-col h-[520px] animate-in fade-in slide-in-from-bottom-5 duration-200">
           {/* Chat Header */}
-          <div className="p-4 bg-gradient-to-r from-[#0E1726] to-[#121A2A] border-b border-white/10 flex items-center justify-between">
+          <div className="p-4 bg-gradient-to-r from-[#0284C7] to-[#0369A1] text-white flex items-center justify-between">
             <div className="flex items-center space-x-2.5">
-              <div className="relative w-8 h-8 rounded-lg bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-[#38BDF8]">
+              <div className="relative w-8 h-8 rounded-lg bg-white/20 border border-white/30 flex items-center justify-center text-white">
                 <Bot className="w-4 h-4" />
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#EF4444] animate-pulse" />
+                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#EF4444] border-2 border-white animate-pulse" />
               </div>
               <div>
                 <h4 className="text-xs sm:text-sm font-bold text-white flex items-center gap-1.5">
-                  Imako AI <span className="text-[#38BDF8]">Assistant</span>
+                  Imako AI <span className="text-sky-200">Assistant</span>
                 </h4>
-                <div className="flex items-center gap-2 text-[10px] text-gray-400 font-mono">
-                  <span className="flex items-center gap-1 text-emerald-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Online
+                <div className="flex items-center gap-2 text-[10px] text-sky-100 font-mono">
+                  <span className="flex items-center gap-1 text-emerald-300 font-semibold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-300" /> Online
                   </span>
                   <span>•</span>
-                  <span>WhatsApp & Telegram Bridge</span>
+                  <span>WA & TG Bridge</span>
                 </div>
               </div>
             </div>
 
             <button
               onClick={() => setIsOpen(false)}
-              className="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+              className="p-1.5 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
               aria-label="Close chat"
             >
               <X className="w-4 h-4" />
@@ -183,14 +182,14 @@ export function ChatbotWidget() {
           </div>
 
           {/* Quick External Bridges Ribbon */}
-          <div className="px-4 py-2 bg-[#090D15] border-b border-white/5 flex items-center justify-between text-[11px]">
-            <span className="text-gray-400 font-mono">Live External Handoff:</span>
+          <div className="px-4 py-2 bg-slate-50 border-b border-slate-200 flex items-center justify-between text-[11px]">
+            <span className="text-slate-500 font-mono font-medium">Live External Handoff:</span>
             <div className="flex items-center space-x-2">
               <a
                 href="https://wa.me/251907173634?text=Hello%20Imako%20Solution,%20I'd%20like%20to%20chat%20live."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 hover:bg-emerald-500/25 border border-emerald-500/30 font-bold transition-colors"
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 hover:bg-emerald-200 border border-emerald-200 font-bold transition-colors"
               >
                 WhatsApp <ArrowUpRight className="w-3 h-3" />
               </a>
@@ -198,7 +197,7 @@ export function ChatbotWidget() {
                 href="https://t.me/imakosolution"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-sky-500/15 text-[#38BDF8] hover:bg-sky-500/25 border border-sky-400/30 font-bold transition-colors"
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-sky-100 text-[#0284C7] hover:bg-sky-200 border border-sky-200 font-bold transition-colors"
               >
                 Telegram <ArrowUpRight className="w-3 h-3" />
               </a>
@@ -206,7 +205,7 @@ export function ChatbotWidget() {
           </div>
 
           {/* Messages Container */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 text-xs">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 text-xs bg-slate-50/50">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -215,8 +214,8 @@ export function ChatbotWidget() {
                 <div
                   className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 leading-relaxed ${
                     msg.sender === "user"
-                      ? "bg-gradient-to-r from-[#0284C7] to-[#38BDF8] text-black font-semibold rounded-br-none shadow-md"
-                      : "bg-[#141C2E] border border-white/10 text-gray-200 rounded-bl-none shadow-sm"
+                      ? "bg-gradient-to-r from-[#0284C7] to-[#0EA5E9] text-white font-medium rounded-br-none shadow-sm"
+                      : "bg-white border border-slate-200 text-slate-800 rounded-bl-none shadow-sm"
                   }`}
                 >
                   {msg.text}
@@ -229,7 +228,7 @@ export function ChatbotWidget() {
                       <button
                         key={idx}
                         onClick={() => handleSendMessage(qa.action)}
-                        className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#172237] hover:bg-sky-500/20 text-[#38BDF8] border border-sky-400/20 hover:border-sky-400/50 transition-all text-left"
+                        className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-white hover:bg-sky-50 text-[#0284C7] border border-sky-200 hover:border-sky-400 transition-all text-left shadow-2xs"
                       >
                         {qa.label} &rarr;
                       </button>
@@ -240,8 +239,8 @@ export function ChatbotWidget() {
             ))}
 
             {isTyping && (
-              <div className="flex items-center gap-1.5 p-2 rounded-xl bg-[#141C2E] text-gray-400 text-[11px] w-24">
-                <RefreshCw className="w-3 h-3 animate-spin text-[#38BDF8]" />
+              <div className="flex items-center gap-1.5 p-2 rounded-xl bg-white border border-slate-200 text-slate-500 text-[11px] w-24">
+                <RefreshCw className="w-3 h-3 animate-spin text-[#0284C7]" />
                 <span>Thinking...</span>
               </div>
             )}
@@ -249,7 +248,7 @@ export function ChatbotWidget() {
           </div>
 
           {/* Message Input Box */}
-          <div className="p-3 bg-[#090D15] border-t border-white/10">
+          <div className="p-3 bg-white border-t border-slate-200">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -262,11 +261,11 @@ export function ChatbotWidget() {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Ask about AI, Web apps, founders..."
-                className="flex-1 bg-[#121A2A] border border-white/10 focus:border-sky-400 rounded-xl px-3 py-2 text-xs text-white placeholder:text-gray-500 focus:outline-none transition-colors"
+                className="flex-1 bg-slate-50 border border-slate-300 focus:border-[#0284C7] focus:bg-white rounded-xl px-3 py-2 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none transition-colors"
               />
               <button
                 type="submit"
-                className="p-2 rounded-xl bg-[#38BDF8] hover:bg-sky-400 text-black font-bold transition-all disabled:opacity-40"
+                className="p-2 rounded-xl bg-[#0284C7] hover:bg-[#0369A1] text-white font-bold transition-all disabled:opacity-40"
                 disabled={!inputValue.trim()}
                 aria-label="Send message"
               >
@@ -280,7 +279,7 @@ export function ChatbotWidget() {
       {/* Floating Launcher Pill */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="group relative flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-[#0D131F] via-[#141C2E] to-[#0D131F] border border-sky-400/50 hover:border-sky-400 shadow-[0_0_25px_rgba(56,189,248,0.35),0_10px_25px_rgba(0,0,0,0.6)] hover:shadow-[0_0_35px_rgba(56,189,248,0.55)] transition-all duration-300 transform hover:scale-105 active:scale-95 text-white"
+        className="group relative flex items-center gap-2.5 px-4 py-3 rounded-full bg-white border-2 border-[#0284C7] hover:border-[#0369A1] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 text-slate-900"
         aria-label="Open AI chat assistant"
       >
         <span className="relative flex h-2.5 w-2.5">
@@ -288,12 +287,12 @@ export function ChatbotWidget() {
           <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#EF4444]" />
         </span>
 
-        <Bot className="w-4 h-4 text-[#38BDF8]" />
+        <Bot className="w-4 h-4 text-[#0284C7]" />
         <span className="text-xs sm:text-sm font-bold tracking-wide">
           {isOpen ? "Close Assistant" : "Live AI Chat"}
         </span>
 
-        <span className="hidden sm:inline-flex text-[10px] font-mono font-bold px-1.5 py-0.2 rounded bg-sky-500/20 text-[#38BDF8] border border-sky-400/30">
+        <span className="hidden sm:inline-flex text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-sky-100 text-[#0284C7] border border-sky-200">
           WA & TG Live
         </span>
       </button>

@@ -25,11 +25,11 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-[#070A0F]/90 border-b border-white/5 transition-all">
+    <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-white/95 border-b border-slate-200 shadow-sm transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand / Logo */}
         <Link href="/" className="flex items-center space-x-3 group">
-          <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-gradient-to-tr from-[#38BDF8]/20 via-white/10 to-[#EF4444]/25 border border-sky-400/20 flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(56,189,248,0.25)] group-hover:border-sky-400/50 transition-colors">
+          <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-gradient-to-tr from-sky-50 via-white to-red-50 border border-slate-200 flex items-center justify-center p-1.5 shadow-sm group-hover:border-[#0284C7] transition-colors">
             <Image
               src="/imako-logo.png"
               alt="Imako Solution Logo"
@@ -40,25 +40,25 @@ export function Header() {
                 (e.target as HTMLElement).style.display = "none";
               }}
             />
-            <Cpu className="w-5 h-5 text-[#38BDF8] hidden [only-child]:block" />
+            <Cpu className="w-5 h-5 text-[#0284C7] hidden [only-child]:block" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <span className="text-xl font-black tracking-tight text-white flex items-center gap-1.5">
-                IMAKO <span className="text-[#38BDF8]">SOLUTION</span>
+              <span className="text-xl font-black tracking-tight text-slate-900 flex items-center gap-1.5">
+                IMAKO <span className="text-[#0284C7]">SOLUTION</span>
               </span>
-              <span className="hidden lg:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#EF4444]/15 text-[#EF4444] border border-[#EF4444]/30">
+              <span className="hidden lg:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-100 text-[#DC2626] border border-red-200">
                 AI NATIVE
               </span>
             </div>
-            <p className="text-[11px] text-gray-400 tracking-wide font-mono hidden sm:block">
+            <p className="text-[11px] text-slate-500 tracking-wide font-mono hidden sm:block">
               AI powered solution for real world problems
             </p>
           </div>
         </Link>
 
         {/* Desktop Navigation across 6 fixed pages */}
-        <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-medium">
+        <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-semibold">
           {navLinks.map((link) => {
             const active = isActive(link.href);
             return (
@@ -67,13 +67,13 @@ export function Header() {
                 href={link.href}
                 className={`transition-colors py-1 relative ${
                   active
-                    ? "text-[#38BDF8] font-bold"
-                    : "text-gray-300 hover:text-[#38BDF8]"
+                    ? "text-[#0284C7] font-bold"
+                    : "text-slate-600 hover:text-[#0284C7]"
                 }`}
               >
                 {link.name}
                 {active && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#38BDF8] rounded-full shadow-[0_0_8px_rgba(56,189,248,0.8)]" />
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0284C7] rounded-full shadow-sm" />
                 )}
               </Link>
             );
@@ -84,7 +84,7 @@ export function Header() {
         <div className="hidden sm:flex items-center space-x-3">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0284C7] via-[#38BDF8] to-[#EF4444] hover:brightness-110 shadow-[0_0_20px_rgba(56,189,248,0.35)] transition-all transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0284C7] via-[#0EA5E9] to-[#EF4444] hover:brightness-105 shadow-md shadow-sky-500/20 transition-all transform hover:-translate-y-0.5"
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>Get a Quote</span>
@@ -96,7 +96,7 @@ export function Header() {
         <div className="flex md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5"
+            className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -106,7 +106,7 @@ export function Header() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-white/10 bg-[#0D131F]/98 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3">
+        <div className="md:hidden border-b border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3 shadow-lg">
           {navLinks.map((link) => {
             const active = isActive(link.href);
             return (
@@ -116,8 +116,8 @@ export function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block text-sm font-semibold py-2 px-3 rounded-lg transition-colors ${
                   active
-                    ? "bg-sky-500/15 text-[#38BDF8] border border-sky-400/20"
-                    : "text-gray-300 hover:text-white hover:bg-white/5"
+                    ? "bg-sky-50 text-[#0284C7] border border-sky-200"
+                    : "text-slate-700 hover:bg-slate-100"
                 }`}
               >
                 {link.name}
@@ -128,7 +128,7 @@ export function Header() {
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center block py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#0284C7] via-[#38BDF8] to-[#EF4444]"
+              className="w-full text-center block py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#0284C7] via-[#0EA5E9] to-[#EF4444] shadow-md"
             >
               Get a Quote / Consultation
             </Link>

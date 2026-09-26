@@ -25,16 +25,16 @@ export function Newsletter() {
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto rounded-2xl bg-[#0D131F]/90 border border-white/10 p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden glow-card">
+    <div className="w-full max-w-xl mx-auto rounded-2xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm relative overflow-hidden">
       <div className="space-y-3 text-center sm:text-left">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-[#EF4444]/15 text-[#EF4444] border border-[#EF4444]/30">
-          <Sparkles className="w-3 h-3 text-[#38BDF8]" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-red-50 text-[#DC2626] border border-red-200">
+          <Sparkles className="w-3 h-3 text-[#0284C7]" />
           <span>MINIMALIST AI INTELLIGENCE BRIEF</span>
         </div>
-        <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
           Subscribe to Imako AI Insights
         </h3>
-        <p className="text-xs sm:text-sm text-gray-400">
+        <p className="text-xs sm:text-sm text-slate-600">
           Get practical workflows, enterprise automation breakdowns, and agency announcements. Zero spam, pure engineering signal.
         </p>
       </div>
@@ -42,7 +42,7 @@ export function Newsletter() {
       <form onSubmit={handleSubmit} className="mt-6 space-y-3">
         <div className="flex flex-col sm:flex-row gap-2">
           <div className="relative flex-1">
-            <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+            <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="email"
               value={email}
@@ -52,13 +52,13 @@ export function Newsletter() {
               }}
               placeholder="Enter your work email address..."
               required
-              className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#070A0F] border border-white/10 focus:border-[#38BDF8] focus:outline-none text-white text-xs sm:text-sm placeholder:text-gray-500 transition-colors"
+              className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:border-[#0284C7] focus:bg-white focus:outline-none text-slate-900 text-xs sm:text-sm placeholder:text-slate-400 transition-colors"
             />
           </div>
           <button
             type="submit"
             disabled={status === "loading" || status === "success"}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#0284C7] via-[#38BDF8] to-[#EF4444] hover:brightness-110 transition-all disabled:opacity-50 shadow-[0_0_15px_rgba(56,189,248,0.3)] flex-shrink-0"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#0284C7] via-[#0EA5E9] to-[#EF4444] hover:brightness-105 transition-all disabled:opacity-50 shadow-md shadow-sky-500/20 flex-shrink-0"
           >
             {status === "loading" ? (
               <span>Syncing...</span>
@@ -76,10 +76,10 @@ export function Newsletter() {
         </div>
 
         {status === "error" && (
-          <p className="text-xs text-[#EF4444] font-mono">{message}</p>
+          <p className="text-xs text-[#DC2626] font-mono">{message}</p>
         )}
         {status === "success" && (
-          <p className="text-xs text-[#38BDF8] font-mono font-bold">{message}</p>
+          <p className="text-xs text-[#0284C7] font-mono font-bold">{message}</p>
         )}
       </form>
     </div>

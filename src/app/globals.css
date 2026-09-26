@@ -2,131 +2,51 @@
 
 @layer base {
   :root {
-    --bg-dark: #070A0F;
-    --bg-surface: #0D131F;
-    --bg-card: #121A2A;
-    --bg-card-hover: #172237;
-    --border-subtle: #1E2D47;
-    
-    /* Brand Colors: Sky Blue, White, Red */
-    --brand-sky: #38BDF8;
-    --brand-sky-deep: #0284C7;
-    --brand-white: #FFFFFF;
-    --brand-red: #EF4444;
-    --brand-red-deep: #DC2626;
-
-    --text-primary: #FFFFFF;
-    --text-muted: #94A3B8;
+    --background: #F8FAFC;
+    --foreground: #0F172A;
+    --card: #FFFFFF;
+    --card-foreground: #0F172A;
+    --border: #E2E8F0;
+    --primary-blue: #0284C7;
+    --primary-sky: #38BDF8;
+    --accent-red: #EF4444;
+    --neutral-grey: #64748B;
+    --light-grey: #F1F5F9;
   }
 
   body {
-    background-color: var(--bg-dark);
-    color: var(--text-primary);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    overflow-x: hidden;
+    background-color: #F8FAFC;
+    color: #0F172A;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
-/* Custom Range Slider Styling with Sky Blue & Red */
-input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  cursor: pointer;
-  width: 100%;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
-  height: 8px;
-  background: #121A2A;
-  border-radius: 9999px;
-  border: 1px solid #1E2D47;
-}
-
-input[type="range"]::-moz-range-track {
-  height: 8px;
-  background: #121A2A;
-  border-radius: 9999px;
-  border: 1px solid #1E2D47;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #38BDF8 0%, #EF4444 100%);
-  cursor: grab;
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.75);
-  border: 2px solid #FFFFFF;
-  margin-top: -7px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-input[type="range"]::-moz-range-thumb {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #38BDF8 0%, #EF4444 100%);
-  cursor: grab;
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.75);
-  border: 2px solid #FFFFFF;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-input[type="range"]::-webkit-slider-thumb:active {
-  cursor: grabbing;
-  transform: scale(1.18);
-  box-shadow: 0 0 22px rgba(239, 68, 68, 0.9);
-}
-
-/* Sky Blue & Red Glow Utilities */
+/* Premium Modern Corporate Card Styling - White, Blue, Red, Grey */
 .glow-card {
-  position: relative;
-  background: linear-gradient(180deg, rgba(18, 26, 42, 0.85) 0%, rgba(9, 13, 21, 0.98) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px -2px rgba(2, 132, 199, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glow-card:hover {
-  border-color: rgba(56, 189, 248, 0.5);
-  box-shadow: 0 0 30px -5px rgba(56, 189, 248, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  border-color: #38BDF8;
+  box-shadow: 0 12px 30px -4px rgba(2, 132, 199, 0.16), 0 4px 12px -2px rgba(239, 68, 68, 0.08);
+  transform: translateY(-2px);
 }
 
-.glow-card-red:hover {
-  border-color: rgba(239, 68, 68, 0.5);
-  box-shadow: 0 0 30px -5px rgba(239, 68, 68, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-}
-
-.glow-pill-sky {
-  box-shadow: 0 0 20px -3px rgba(56, 189, 248, 0.4);
-}
-
-.glow-pill-red {
-  box-shadow: 0 0 20px -3px rgba(239, 68, 68, 0.4);
-}
-
-.glow-text-sky {
-  text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
-}
-
-.glow-text-red {
-  text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
-}
-
-/* Custom Scrollbar */
+/* Custom Scrollbar in Clean Grey/Blue */
 ::-webkit-scrollbar {
   width: 8px;
-  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #070A0F;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E2D47;
+  background: #CBD5E1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #38BDF8;
+  background: #0284C7;
 }

@@ -38,8 +38,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className="min-h-screen bg-[#070A0F] text-[#FFFFFF] antialiased selection:bg-[#38BDF8]/25 selection:text-[#38BDF8] flex flex-col justify-between">
+    <html lang="en" className="scroll-smooth">
+      <body className="min-h-screen bg-[#F8FAFC] text-[#0F172A] antialiased selection:bg-[#38BDF8]/30 selection:text-[#0284C7] flex flex-col justify-between">
         {/* Persistent Global Header */}
         <Header />
 

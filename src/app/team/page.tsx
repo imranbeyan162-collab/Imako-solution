@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { TEAM_MEMBERS, DEPARTMENTS, TeamMember } from "@/data/teamData";
-import { Users, Sparkles, ArrowRight, Code, Shield, UserPlus } from "lucide-react";
+import { Users, ArrowRight, UserPlus } from "lucide-react";
 
 export default function TeamPage() {
   const [selectedDept, setSelectedDept] = useState("All");
@@ -13,23 +13,23 @@ export default function TeamPage() {
     : TEAM_MEMBERS.filter((m) => m.department === selectedDept);
 
   return (
-    <main className="min-h-screen bg-[#070A0F] text-white py-16 sm:py-24">
+    <main className="min-h-screen bg-[#F8FAFC] text-slate-900 py-16 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center space-y-5">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-sky-500/10 text-[#38BDF8] border border-sky-400/25">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-sky-50 text-[#0284C7] border border-sky-200">
             <Users className="w-3.5 h-3.5" />
             <span>SPECIALIZED ENGINEERING SQUAD</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-900 leading-tight">
             Our Extended{" "}
-            <span className="bg-gradient-to-r from-[#38BDF8] via-white to-[#EF4444] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#0284C7] via-[#0EA5E9] to-[#EF4444] bg-clip-text text-transparent">
               Technical Team
             </span>
           </h1>
 
-          <p className="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Distinct from our executive founders, the Imako technical roster brings together specialized engineers, creative media designers, and growth architects executing on daily client sprints.
           </p>
         </div>
@@ -42,8 +42,8 @@ export default function TeamPage() {
               onClick={() => setSelectedDept(dept)}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 selectedDept === dept
-                  ? "bg-[#38BDF8] text-black shadow-[0_0_15px_rgba(56,189,248,0.4)]"
-                  : "bg-[#0D131F] text-gray-400 hover:text-white border border-white/5 hover:border-sky-400/30"
+                  ? "bg-[#0284C7] text-white shadow-sm"
+                  : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:border-slate-300"
               }`}
             >
               {dept}
@@ -56,29 +56,29 @@ export default function TeamPage() {
           {filteredMembers.map((member: TeamMember) => (
             <div
               key={member.id}
-              className="glow-card rounded-2xl bg-[#0D131F] border border-white/10 p-7 hover:border-sky-400/50 transition-all flex flex-col justify-between space-y-6 group"
+              className="rounded-2xl bg-white border border-slate-200 p-7 shadow-sm hover:border-[#0284C7] hover:shadow-md transition-all flex flex-col justify-between space-y-6 group"
             >
               <div className="space-y-4">
                 {/* Avatar Placeholder Slot */}
                 <div className="flex items-center justify-between">
-                  <div className="w-14 h-14 rounded-2xl bg-[#141C2E] border border-white/10 flex items-center justify-center text-xl font-black text-gray-300 group-hover:border-sky-400/40 transition-colors">
+                  <div className="w-14 h-14 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-xl font-black text-slate-800 group-hover:border-[#0284C7] transition-colors">
                     {member.name.split(" ")[0][0]}
                   </div>
-                  <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-white/5 text-[#38BDF8] border border-white/5">
+                  <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] border border-sky-200 font-semibold">
                     {member.department}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-[#38BDF8] transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#0284C7] transition-colors">
                     {member.name}
                   </h3>
-                  <p className="text-xs font-mono text-gray-400 mt-0.5">
+                  <p className="text-xs font-mono text-slate-500 font-semibold mt-0.5">
                     {member.role}
                   </p>
                 </div>
 
-                <p className="text-xs text-gray-300 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed">
                   {member.bio}
                 </p>
 
@@ -87,7 +87,7 @@ export default function TeamPage() {
                   {member.skills.map((skill, sIdx) => (
                     <span
                       key={sIdx}
-                      className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.03] text-gray-300 border border-white/5"
+                      className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 text-slate-700 border border-slate-200"
                     >
                       {skill}
                     </span>
@@ -96,27 +96,27 @@ export default function TeamPage() {
               </div>
 
               {/* Status Note */}
-              <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-gray-500 font-mono">
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-mono">
                 <span>Active Member Slot</span>
-                <span className="text-[#38BDF8]">Assigned</span>
+                <span className="text-[#0284C7] font-bold">Assigned</span>
               </div>
             </div>
           ))}
 
           {/* We're Hiring Card */}
-          <div className="rounded-2xl bg-gradient-to-tr from-[#0D131F] to-[#141C2E] border-2 border-dashed border-sky-400/30 p-7 flex flex-col justify-between space-y-6 text-center">
+          <div className="rounded-2xl bg-gradient-to-tr from-sky-50 via-white to-red-50 border-2 border-dashed border-sky-300 p-7 flex flex-col justify-between space-y-6 text-center">
             <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-400/30 flex items-center justify-center mx-auto text-[#38BDF8]">
+              <div className="w-12 h-12 rounded-2xl bg-sky-100 border border-sky-200 flex items-center justify-center mx-auto text-[#0284C7]">
                 <UserPlus className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-white">Join the Imako Squad</h3>
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <h3 className="text-xl font-bold text-slate-900">Join the Imako Squad</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
                 We are actively looking for exceptional AI automation engineers, Next.js frontend masters, and performance marketers.
               </p>
             </div>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-white/10 hover:bg-[#38BDF8] hover:text-black transition-all"
+              className="inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold text-slate-800 bg-white hover:bg-[#0284C7] hover:text-white border border-slate-200 shadow-xs transition-all"
             >
               <span>Submit General Application</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -125,9 +125,9 @@ export default function TeamPage() {
         </div>
 
         {/* Note on Founder Distinction */}
-        <div className="rounded-2xl bg-[#0D131F] border border-white/5 p-6 text-center text-xs text-gray-400">
+        <div className="rounded-2xl bg-white border border-slate-200 p-6 text-center text-xs text-slate-600 shadow-xs">
           Looking for company leadership and co-founder bios?{" "}
-          <Link href="/about" className="text-[#38BDF8] hover:underline font-bold">
+          <Link href="/about" className="text-[#0284C7] hover:underline font-bold">
             Visit the Founders Page &rarr;
           </Link>
         </div>
