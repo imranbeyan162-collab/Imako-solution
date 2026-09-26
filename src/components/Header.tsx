@@ -93,7 +93,7 @@ export function Header() {
           </a>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0B3D91] via-[#3BA7F2] to-[#7FE7D6] hover:brightness-105 shadow-md shadow-[#3BA7F2]/25 transition-all transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0B3D91] via-[#3BA7F2] to-[#7FE7D6] hover:brightness-105 shadow-md shadow-[#3BA7F2]/25 hover:shadow-[0_8px_25px_rgba(59,167,242,0.4)] transition-all transform hover:-translate-y-0.5 hover-cinematic"
           >
             <Sparkles className="w-3.5 h-3.5 text-[#7FE7D6]" />
             <span className="text-white">Get a Quote</span>

@@ -89,36 +89,48 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-[#E8F6FF] text-[#0B3D91]">
-      {/* 1. Minimal Header & Identity */}
+      {/* 1. Minimal Header & Identity with On-Load Reveals */}
       <section className="pt-12 pb-8 md:pt-16 md:pb-10 border-b-2 border-[#CBE5FC] bg-[#E8F6FF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <RevealOnScroll direction="down" delayMs={50}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono bg-[#7FE7D6] text-[#0B3D91] border border-[#0B3D91]/20 font-bold shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-[#0B3D91] animate-ping" />
-              <span>IMAKO SOLUTION</span>
-              <span>•</span>
-              <span className="uppercase">AI Native Firm</span>
-            </div>
-          </RevealOnScroll>
+          <div className="animate-hero-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono bg-[#7FE7D6] text-[#0B3D91] border border-[#0B3D91]/20 font-bold shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-[#0B3D91] animate-ping" />
+            <span>IMAKO SOLUTION</span>
+            <span>•</span>
+            <span className="uppercase">AI Native Firm</span>
+          </div>
 
-          <RevealOnScroll direction="up" delayMs={100}>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#0B3D91] leading-tight max-w-4xl mx-auto">
-              AI Powered Solution for{" "}
-              <span className="bg-gradient-to-r from-[#0B3D91] via-[#3BA7F2] to-[#7FE7D6] bg-clip-text text-transparent">
-                Real World Problems
-              </span>
-            </h1>
-          </RevealOnScroll>
+          <h1 className="animate-hero-title text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#0B3D91] leading-tight max-w-4xl mx-auto">
+            Architecting the Future of{" "}
+            <span className="bg-gradient-to-r from-[#0B3D91] via-[#3BA7F2] to-[#7FE7D6] bg-clip-text text-transparent">
+              Autonomous Systems
+            </span>
+          </h1>
 
-          <RevealOnScroll direction="up" delayMs={150}>
-            <p className="text-sm sm:text-base text-[#0B3D91]/80 max-w-2xl mx-auto font-medium">
-              Select a destination below to explore our services, review live client systems, meet the founders, or receive a direct quote.
-            </p>
-          </RevealOnScroll>
+          <p className="animate-hero-subtitle text-sm sm:text-base text-[#0B3D91]/80 max-w-2xl mx-auto font-medium">
+            AI-powered solutions for real-world enterprise friction. Select a destination below to explore our services, review live client systems, meet the founders, or receive a direct quote.
+          </p>
+
+          {/* Main Hero Call-to-Action Buttons */}
+          <div className="animate-hero-cta pt-3 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-black text-white bg-gradient-to-r from-[#0B3D91] via-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-md shadow-[#3BA7F2]/25 hover-cinematic"
+            >
+              <span>Get a Direct Project Quote</span>
+              <ArrowRight className="w-4 h-4 text-[#7FE7D6]" />
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold text-[#0B3D91] bg-white border-2 border-[#CBE5FC] hover:border-[#3BA7F2] shadow-xs hover-cinematic"
+            >
+              <span>Explore 11 Services</span>
+              <ArrowUpRight className="w-4 h-4 text-[#3BA7F2]" />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* 2. THE PAGE PORTAL HUB: Pages Appear First as Primary Cards */}
+      {/* 2. THE PAGE PORTAL HUB: Pages Appear First as Primary Cards with Staggered Scroll Animations */}
       <section className="py-12 md:py-16 bg-white border-b-2 border-[#CBE5FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8 pb-3 border-b-2 border-[#CBE5FC]">
@@ -139,10 +151,10 @@ export default function HomePage() {
             {pagePortals.map((portal, idx) => {
               const IconComponent = portal.icon;
               return (
-                <RevealOnScroll key={portal.href} direction="up" delayMs={60 + idx * 70}>
+                <RevealOnScroll key={portal.href} direction="up" delayMs={80 + idx * 100} durationMs={800}>
                   <Link
                     href={portal.href}
-                    className={`group rounded-3xl p-6 sm:p-7 bg-[#E8F6FF] border-2 border-[#CBE5FC] hover:${portal.accentBorder} shadow-xs hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between h-full space-y-5`}
+                    className={`group rounded-3xl p-6 sm:p-7 bg-[#E8F6FF] border-2 border-[#CBE5FC] hover:${portal.accentBorder} shadow-xs hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 flex flex-col justify-between h-full space-y-5`}
                   >
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
@@ -248,37 +260,38 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {FOUNDERS.map((founder) => (
-              <div
-                key={founder.id}
-                className="p-5 sm:p-6 rounded-3xl bg-[#E8F6FF] border-2 border-[#CBE5FC] hover:border-[#7FE7D6] shadow-xs hover:shadow-md transition-all flex flex-col sm:flex-row items-center gap-5"
-              >
-                <div className="relative w-24 h-24 rounded-2xl overflow-hidden bg-white border-2 border-[#3BA7F2] flex-shrink-0 shadow-xs">
-                  <Image
-                    src={founder.avatar}
-                    alt={founder.name}
-                    fill
-                    className="object-cover object-top"
-                  />
-                </div>
-                <div className="space-y-1.5 text-center sm:text-left flex-1 min-w-0">
-                  <h3 className="text-lg font-black text-[#0B3D91]">{founder.name}</h3>
-                  <p className="text-xs font-mono text-[#3BA7F2] font-bold">{founder.role}</p>
-                  <p className="text-xs text-[#0B3D91]/75 line-clamp-2">
-                    {founder.humanSide.title}
-                  </p>
-                  <div className="pt-1">
-                    <a
-                      href={founder.whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-mono font-bold text-[#0B3D91] hover:text-[#3BA7F2] inline-flex items-center gap-1"
-                    >
-                      <span>WA: {founder.phoneDisplay} &rarr;</span>
-                    </a>
+            {FOUNDERS.map((founder, fIdx) => (
+              <RevealOnScroll key={founder.id} direction="up" delayMs={100 + fIdx * 150} durationMs={800}>
+                <div
+                  className="p-5 sm:p-6 rounded-3xl bg-[#E8F6FF] border-2 border-[#CBE5FC] hover:border-[#7FE7D6] shadow-xs hover-cinematic flex flex-col sm:flex-row items-center gap-5 h-full"
+                >
+                  <div className="relative w-24 h-24 rounded-2xl overflow-hidden bg-white border-2 border-[#3BA7F2] flex-shrink-0 shadow-xs">
+                    <Image
+                      src={founder.avatar}
+                      alt={founder.name}
+                      fill
+                      className="object-cover object-top"
+                    />
+                  </div>
+                  <div className="space-y-1.5 text-center sm:text-left flex-1 min-w-0">
+                    <h3 className="text-lg font-black text-[#0B3D91]">{founder.name}</h3>
+                    <p className="text-xs font-mono text-[#3BA7F2] font-bold">{founder.role}</p>
+                    <p className="text-xs text-[#0B3D91]/75 line-clamp-2">
+                      {founder.humanSide.title}
+                    </p>
+                    <div className="pt-1">
+                      <a
+                        href={founder.whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-mono font-bold text-[#0B3D91] hover:text-[#3BA7F2] inline-flex items-center gap-1"
+                      >
+                        <span>WA: {founder.phoneDisplay} &rarr;</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </RevealOnScroll>
             ))}
           </div>
         </div>

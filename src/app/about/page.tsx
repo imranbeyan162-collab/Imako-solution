@@ -15,28 +15,95 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#E8F6FF] text-[#0B3D91] py-12 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        {/* 1. Header & Minimal Company Overview */}
-        <RevealOnScroll direction="down" delayMs={50}>
-          <div className="max-w-4xl mx-auto text-center space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-[#7FE7D6] text-[#0B3D91] border border-[#0B3D91]/20 shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-[#0B3D91]" />
-              <span>FOUNDED JULY 27, 2026</span>
+        {/* 1. Header & Minimal Company Overview with On-Load Reveals */}
+        <div className="max-w-4xl mx-auto text-center space-y-4">
+          <div className="animate-hero-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-[#7FE7D6] text-[#0B3D91] border border-[#0B3D91]/20 shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#0B3D91]" />
+            <span>FOUNDED JULY 27, 2026</span>
+          </div>
+
+          <h1 className="animate-hero-title text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#0B3D91] leading-tight">
+            Architecting the Future of{" "}
+            <span className="bg-gradient-to-r from-[#0B3D91] via-[#3BA7F2] to-[#7FE7D6] bg-clip-text text-transparent">
+              Autonomous Systems
+            </span>
+          </h1>
+
+          <p className="animate-hero-subtitle text-base sm:text-lg text-[#0B3D91]/80 leading-relaxed max-w-2xl mx-auto">
+            We replace tedious manual overhead with elegant software, autonomous agents, and high-conversion web platforms.
+          </p>
+
+          <div className="animate-hero-cta pt-2 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] hover:scale-[1.02] shadow-md hover:shadow-lg transition-all duration-300 transform"
+            >
+              <span>Schedule Founder Consultation</span>
+              <ArrowRight className="w-4 h-4 text-[#0B3D91]" />
+            </Link>
+          </div>
+        </div>
+
+        {/* 2. Co-Founders in Action Together Spotlight */}
+        <RevealOnScroll direction="up" durationMs={800}>
+          <div className="max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-10 border-2 border-[#3BA7F2] shadow-lg space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-[#CBE5FC] pb-4">
+              <div>
+                <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-[#7FE7D6] text-[#0B3D91] font-bold inline-block">
+                  ★ CO-FOUNDERS IN ACTION
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-black text-[#0B3D91] mt-1">
+                  Imran Mohammedbeyan & Mikiyas Alemu
+                </h2>
+              </div>
+              <p className="text-xs font-mono text-[#3BA7F2] font-bold">
+                Field Deployment & Client Architecture
+              </p>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#0B3D91] leading-tight">
-              Architecting the Future of{" "}
-              <span className="bg-gradient-to-r from-[#0B3D91] via-[#3BA7F2] to-[#7FE7D6] bg-clip-text text-transparent">
-                Autonomous Systems
-              </span>
-            </h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="group relative rounded-2xl overflow-hidden bg-[#E8F6FF] border-2 border-[#CBE5FC] hover:border-[#7FE7D6] shadow-sm hover:shadow-xl transition-all duration-300">
+                <div className="relative w-full aspect-[4/5] overflow-hidden">
+                  <Image
+                    src="/images/founders-together-1.png"
+                    alt="Mikiyas Alemu and Imran Mohammedbeyan together launching digital systems"
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-3.5 bg-white border-t border-[#CBE5FC]">
+                  <p className="text-xs font-black text-[#0B3D91]">
+                    Mikiyas Alemu & Imran Mohammedbeyan
+                  </p>
+                  <p className="text-[11px] text-[#0B3D91]/75 mt-0.5">
+                    Driving client system deployments and enterprise digital expansion.
+                  </p>
+                </div>
+              </div>
 
-            <p className="text-base sm:text-lg text-[#0B3D91]/80 leading-relaxed max-w-2xl mx-auto">
-              We replace tedious manual overhead with elegant software, autonomous agents, and high-conversion web platforms.
-            </p>
+              <div className="group relative rounded-2xl overflow-hidden bg-[#E8F6FF] border-2 border-[#CBE5FC] hover:border-[#7FE7D6] shadow-sm hover:shadow-xl transition-all duration-300">
+                <div className="relative w-full aspect-[4/5] overflow-hidden">
+                  <Image
+                    src="/images/founders-together-2.png"
+                    alt="Mikiyas Alemu and Imran Mohammedbeyan working together in the field"
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-3.5 bg-white border-t border-[#CBE5FC]">
+                  <p className="text-xs font-black text-[#0B3D91]">
+                    Founders Partnership & Execution
+                  </p>
+                  <p className="text-[11px] text-[#0B3D91]/75 mt-0.5">
+                    Combining AI systems engineering with high-impact growth and creative direction.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </RevealOnScroll>
 
-        {/* 2. Minimal Mission Statement Card */}
+        {/* 3. Minimal Mission Statement Card */}
         <RevealOnScroll direction="scale" durationMs={800}>
           <div className="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-10 border-2 border-[#CBE5FC] shadow-md text-center space-y-3">
             <span className="text-xs font-mono uppercase tracking-widest text-[#3BA7F2] font-black">
@@ -211,7 +278,7 @@ export default function AboutPage() {
             <div className="pt-2">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] shadow-lg transition-all duration-300 transform hover:-translate-y-1 group"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] shadow-lg hover-cinematic group"
               >
                 <span>Schedule Founder Consultation</span>
                 <ArrowRight className="w-4 h-4 text-[#0B3D91] group-hover:translate-x-1.5 transition-transform duration-200" />

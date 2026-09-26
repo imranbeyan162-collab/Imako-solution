@@ -229,7 +229,7 @@ export function Footer() {
                   href={soc.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl bg-white border border-[#CBE5FC] shadow-xs hover:border-[#7FE7D6] hover:bg-[#E8F6FF] transition-all flex items-center justify-between group"
+                  className="p-2.5 rounded-xl bg-white border border-[#CBE5FC] shadow-xs hover:border-[#7FE7D6] hover:bg-[#E8F6FF] transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_8px_20px_rgba(59,167,242,0.25)] flex items-center justify-between group"
                 >
                   <span className={`text-xs font-bold ${soc.color} transition-colors block truncate`}>
                     {soc.name}
@@ -244,7 +244,7 @@ export function Footer() {
                 href="https://t.me/imakosolution"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-md shadow-[#3BA7F2]/25 transition-all"
+                className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-md shadow-[#3BA7F2]/25 hover:shadow-[0_10px_25px_rgba(59,167,242,0.35)] transition-all duration-300 transform hover:scale-[1.02] active:scale-95 group hover-cinematic"
               >
                 <Send className="w-3.5 h-3.5 text-[#7FE7D6]" />
                 <span>Join Official Telegram</span>

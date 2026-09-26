@@ -123,7 +123,7 @@ export default function TeamPage() {
               </div>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl text-xs font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] shadow-md transition-all duration-200 group"
+                className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl text-xs font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] shadow-md hover-cinematic group"
               >
                 <span>Submit General Application</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[#0B3D91] group-hover:translate-x-1 transition-transform" />

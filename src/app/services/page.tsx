@@ -80,14 +80,14 @@ export default function ServicesPage() {
                   <div className="pt-4 flex flex-wrap items-center gap-4">
                     <Link
                       href={`/contact?service=${encodeURIComponent(flagship.title)}`}
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-black text-white bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-md shadow-[#3BA7F2]/25 transition-all duration-300 transform hover:-translate-y-1 group/btn"
+                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-black text-white bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-md shadow-[#3BA7F2]/25 hover-cinematic group/btn"
                     >
                       <span>Request Web Architecture Quote</span>
                       <ArrowRight className="w-4 h-4 text-[#7FE7D6] group-hover/btn:translate-x-1.5 transition-transform duration-200" />
                     </Link>
                     <Link
                       href="/portfolio"
-                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-[#0B3D91] bg-[#7FE7D6]/35 hover:bg-[#7FE7D6] border border-[#7FE7D6] shadow-xs transition-all duration-300 transform hover:-translate-y-1"
+                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-[#0B3D91] bg-[#7FE7D6]/35 hover:bg-[#7FE7D6] border border-[#7FE7D6] shadow-xs hover-cinematic"
                     >
                       <span>View 7 Live Case Studies</span>
                     </Link>
@@ -231,7 +231,7 @@ export default function ServicesPage() {
             <div className="pt-2">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] shadow-lg transition-all transform hover:-translate-y-1 group"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] shadow-lg hover-cinematic group"
               >
                 <span>Build Custom Solution Package</span>
                 <ArrowRight className="w-4 h-4 text-[#0B3D91] group-hover:translate-x-1.5 transition-transform duration-200" />

@@ -52,13 +52,13 @@ export function Newsletter() {
               }}
               placeholder="Enter your work email address..."
               required
-              className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#E8F6FF] border border-[#3BA7F2]/40 focus:border-[#0B3D91] focus:bg-white focus:outline-none text-[#0B3D91] text-xs sm:text-sm placeholder:text-[#0B3D91]/45 transition-colors"
+              className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#E8F6FF] border border-[#3BA7F2]/40 text-[#0B3D91] text-xs sm:text-sm placeholder:text-[#0B3D91]/45 tech-input-glow"
             />
           </div>
           <button
             type="submit"
             disabled={status === "loading" || status === "success"}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 transition-all disabled:opacity-50 shadow-md shadow-[#3BA7F2]/25 flex-shrink-0"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 transition-all disabled:opacity-50 shadow-md shadow-[#3BA7F2]/25 flex-shrink-0 hover-cinematic"
           >
             {status === "loading" ? (
               <span>Syncing...</span>

@@ -170,7 +170,7 @@ export default function PortfolioPage() {
           <div className="text-center pt-8">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-sm font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] shadow-lg transition-all duration-300 transform hover:-translate-y-1 group"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-sm font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] shadow-lg transition-all duration-300 transform hover:-translate-y-1 group hover-cinematic"
             >
               <span>Commission Your Next Case Study</span>
               <ArrowUpRight className="w-4 h-4 text-[#0B3D91] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200" />

@@ -275,11 +275,11 @@ export function ChatbotWidget() {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Ask about AI, Web apps, founders..."
-                className="flex-1 bg-[#E8F6FF] border border-[#3BA7F2]/40 focus:border-[#0B3D91] focus:bg-white rounded-xl px-3 py-2 text-xs text-[#0B3D91] placeholder:text-[#0B3D91]/50 focus:outline-none transition-colors"
+                className="flex-1 bg-[#E8F6FF] border border-[#3BA7F2]/40 rounded-xl px-3 py-2 text-xs text-[#0B3D91] placeholder:text-[#0B3D91]/50 tech-input-glow"
               />
               <button
                 type="submit"
-                className="p-2 rounded-xl bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 text-white font-bold transition-all disabled:opacity-40"
+                className="p-2 rounded-xl bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 text-white font-bold transition-all disabled:opacity-40 hover-cinematic"
                 disabled={!inputValue.trim()}
                 aria-label="Send message"
               >
@@ -290,10 +290,10 @@ export function ChatbotWidget() {
         </div>
       )}
 
-      {/* Floating Launcher Pill */}
+      {/* Floating Launcher Pill with Cinematic Hover State */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="group relative flex items-center gap-2.5 px-4 py-3 rounded-full bg-white border-2 border-[#0B3D91] hover:border-[#3BA7F2] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 text-[#0B3D91]"
+        className="group relative flex items-center gap-2.5 px-4 py-3 rounded-full bg-white border-2 border-[#0B3D91] hover:border-[#3BA7F2] shadow-xl hover:shadow-[0_10px_30px_rgba(59,167,242,0.4),0_0_20px_rgba(127,231,214,0.5)] transition-all duration-300 transform hover:scale-[1.05] active:scale-95 text-[#0B3D91] cursor-pointer hover-cinematic"
         aria-label="Open AI chat assistant"
       >
         <span className="relative flex h-2.5 w-2.5">

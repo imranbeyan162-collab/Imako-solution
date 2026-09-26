@@ -44,7 +44,7 @@ export const FOUNDERS: FounderItem[] = [
         "Beyond code and machine learning architectures, Imran is dedicated to Islamic dawa work — sharing knowledge, ethics, and moral clarity with youth and communities. His deep spiritual grounding inspires Imako Solution's commitment to honesty, ethical software design, and using technology as a force for societal uplift.",
       passionBadges: ["Islamic Dawa & Community Education", "Ethical AI Systems", "Algorithmic Problem Solver"]
     },
-    avatar: "/images/founder-imran-2.png",
+    avatar: "/images/founder-imran-1.png",
     gallery: [
       {
         src: "/images/founder-imran-1.png",
@@ -52,8 +52,8 @@ export const FOUNDERS: FounderItem[] = [
         aspectRatio: "9/16"
       },
       {
-        src: "/images/founder-imran-2.png",
-        caption: "Imran Mohammedbeyan — Technical Architecture & Machine Learning",
+        src: "/images/founders-together-2.png",
+        caption: "Co-Founders Mikiyas & Imran in the field launching digital platforms",
         aspectRatio: "9/16"
       },
       {
@@ -92,6 +92,11 @@ export const FOUNDERS: FounderItem[] = [
       {
         src: "/images/founder-mikiyas-1.jpg",
         caption: "Mikiyas Alemu — Co-Founder, Growth & Engineering Lead",
+        aspectRatio: "9/16"
+      },
+      {
+        src: "/images/founders-together-1.png",
+        caption: "Co-Founders Mikiyas & Imran driving enterprise software adoption",
         aspectRatio: "9/16"
       },
       {

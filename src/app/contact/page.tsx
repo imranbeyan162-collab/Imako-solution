@@ -100,7 +100,7 @@ function ContactFormContent() {
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
       {/* Left Column: Consultation / "Get a Quote" Form (7 cols) */}
       <div className="lg:col-span-7">
-        <RevealOnScroll direction="left" durationMs={800}>
+        <RevealOnScroll direction="up" durationMs={800} delayMs={100}>
           <div className="bg-white border-2 border-[#CBE5FC] rounded-3xl p-7 sm:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 relative">
             <div className="space-y-2 mb-8 border-b-2 border-[#CBE5FC] pb-5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-bold bg-[#7FE7D6] text-[#0B3D91] border border-[#0B3D91]/20">
@@ -134,7 +134,7 @@ function ContactFormContent() {
                 <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
                   <a
                     href={mailtoUrl}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-black text-white bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-md transition-all hover:scale-102"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-black text-white bg-gradient-to-r from-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-md hover-cinematic"
                   >
                     <Mail className="w-4 h-4 text-[#7FE7D6]" />
                     <span>Open in Gmail / Email</span>
@@ -143,7 +143,7 @@ function ContactFormContent() {
                     href={whatsappNotifyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] border border-[#0B3D91]/20 transition-all hover:scale-102"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-black text-[#0B3D91] bg-[#7FE7D6] hover:bg-[#62E0CD] border border-[#0B3D91]/20 hover-cinematic"
                   >
                     <span>Instant WhatsApp Ping</span>
                   </a>
@@ -152,7 +152,7 @@ function ContactFormContent() {
                 <div className="pt-3">
                   <button
                     onClick={() => setStatus("idle")}
-                    className="text-xs text-[#0B3D91]/70 hover:text-[#0B3D91] underline font-bold"
+                    className="text-xs text-[#0B3D91]/70 hover:text-[#0B3D91] underline font-bold cursor-pointer"
                   >
                     Send Another Inquiry
                   </button>
@@ -160,7 +160,7 @@ function ContactFormContent() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5 text-left">
-                {/* Name & Email */}
+                {/* 1. Name & Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-[#0B3D91] flex items-center gap-1.5">
@@ -173,7 +173,7 @@ function ContactFormContent() {
                       placeholder="e.g. Dawit Bekele"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#E8F6FF] border border-[#3BA7F2]/40 focus:border-[#0B3D91] focus:bg-white rounded-xl px-3.5 py-3 text-xs sm:text-sm text-[#0B3D91] placeholder:text-[#0B3D91]/45 focus:outline-none transition-all duration-200 focus:ring-2 focus:ring-[#7FE7D6]"
+                      className="w-full bg-[#E8F6FF] border border-[#3BA7F2]/40 rounded-xl px-3.5 py-3 text-xs sm:text-sm text-[#0B3D91] placeholder:text-[#0B3D91]/45 tech-input-glow"
                     />
                   </div>
 
@@ -188,48 +188,66 @@ function ContactFormContent() {
                       placeholder="dawit@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-[#E8F6FF] border border-[#3BA7F2]/40 focus:border-[#0B3D91] focus:bg-white rounded-xl px-3.5 py-3 text-xs sm:text-sm text-[#0B3D91] placeholder:text-[#0B3D91]/45 focus:outline-none transition-all duration-200 focus:ring-2 focus:ring-[#7FE7D6]"
+                      className="w-full bg-[#E8F6FF] border border-[#3BA7F2]/40 rounded-xl px-3.5 py-3 text-xs sm:text-sm text-[#0B3D91] placeholder:text-[#0B3D91]/45 tech-input-glow"
                     />
                   </div>
                 </div>
 
-                {/* Company & Service Needed */}
+                {/* 2. Company & Budget */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-[#0B3D91] flex items-center gap-1.5">
                       <Building2 className="w-3.5 h-3.5 text-[#3BA7F2]" />
-                      <span>Company / Organization Name</span>
+                      <span>Company / Organization</span>
                     </label>
                     <input
                       type="text"
                       placeholder="e.g. Bisrat Group"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full bg-[#E8F6FF] border border-[#3BA7F2]/40 focus:border-[#0B3D91] focus:bg-white rounded-xl px-3.5 py-3 text-xs sm:text-sm text-[#0B3D91] placeholder:text-[#0B3D91]/45 focus:outline-none transition-all duration-200 focus:ring-2 focus:ring-[#7FE7D6]"
+                      className="w-full bg-[#E8F6FF] border border-[#3BA7F2]/40 rounded-xl px-3.5 py-3 text-xs sm:text-sm text-[#0B3D91] placeholder:text-[#0B3D91]/45 tech-input-glow"
                     />
                   </div>
 
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-[#0B3D91] flex items-center gap-1.5">
-                      <HelpCircle className="w-3.5 h-3.5 text-[#3BA7F2]" />
-                      <span>Service Needed *</span>
+                      <Sparkles className="w-3.5 h-3.5 text-[#3BA7F2]" />
+                      <span>Estimated Budget Range</span>
                     </label>
                     <select
-                      value={formData.serviceNeeded}
-                      onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
-                      className="w-full bg-[#E8F6FF] border border-[#3BA7F2]/40 focus:border-[#0B3D91] focus:bg-white rounded-xl px-3.5 py-3 text-xs sm:text-sm text-[#0B3D91] focus:outline-none transition-all duration-200 focus:ring-2 focus:ring-[#7FE7D6] cursor-pointer font-medium"
+                      value={formData.budgetRange}
+                      onChange={(e) => setFormData({ ...formData, budgetRange: e.target.value })}
+                      className="w-full bg-[#E8F6FF] border border-[#3BA7F2]/40 rounded-xl px-3.5 py-3 text-xs sm:text-sm text-[#0B3D91] cursor-pointer font-medium tech-input-glow"
                     >
-                      {SERVICES.map((s) => (
-                        <option key={s.id} value={s.title}>
-                          {s.title} {s.isFlagship ? "(Flagship)" : ""}
-                        </option>
-                      ))}
-                      <option value="Multi-Service Stack">Multi-Service Custom Stack</option>
+                      <option value="Starter / MVP (< $1,000)">Starter / MVP (&lt; $1,000)</option>
+                      <option value="$1,000 - $3,000">$1,000 - $3,000 (Standard Production)</option>
+                      <option value="$3,000 - $5,000">$3,000 - $5,000 (Enterprise Scaling)</option>
+                      <option value="$5,000+">$5,000+ (Autonomous Multi-System)</option>
                     </select>
                   </div>
                 </div>
 
-                {/* Message Details */}
+                {/* 3. Service Needed */}
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-[#0B3D91] flex items-center gap-1.5">
+                    <HelpCircle className="w-3.5 h-3.5 text-[#3BA7F2]" />
+                    <span>Service Needed *</span>
+                  </label>
+                  <select
+                    value={formData.serviceNeeded}
+                    onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
+                    className="w-full bg-[#E8F6FF] border border-[#3BA7F2]/40 rounded-xl px-3.5 py-3 text-xs sm:text-sm text-[#0B3D91] cursor-pointer font-medium tech-input-glow"
+                  >
+                    {SERVICES.map((s) => (
+                      <option key={s.id} value={s.title}>
+                        {s.title} {s.isFlagship ? "(Flagship)" : ""}
+                      </option>
+                    ))}
+                    <option value="Multi-Service Custom Stack">Multi-Service Custom Stack</option>
+                  </select>
+                </div>
+
+                {/* 4. Message Details */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-[#0B3D91]">
                     Project Scope, Requirements, or Friction to Eliminate *
@@ -240,7 +258,7 @@ function ContactFormContent() {
                     placeholder="Describe what you want built, timeline expectations, or manual workflows you want automated..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-[#E8F6FF] border border-[#3BA7F2]/40 focus:border-[#0B3D91] focus:bg-white rounded-xl p-3.5 text-xs sm:text-sm text-[#0B3D91] placeholder:text-[#0B3D91]/45 focus:outline-none transition-all duration-200 focus:ring-2 focus:ring-[#7FE7D6]"
+                    className="w-full bg-[#E8F6FF] border border-[#3BA7F2]/40 rounded-xl p-3.5 text-xs sm:text-sm text-[#0B3D91] placeholder:text-[#0B3D91]/45 tech-input-glow"
                   />
                 </div>
 
@@ -250,11 +268,11 @@ function ContactFormContent() {
                   </p>
                 )}
 
-                {/* Submit Button in Ocean Breeze Gradient */}
+                {/* Submit Button in Ocean Breeze Gradient with Hover Cinematic */}
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="w-full inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl text-sm font-black text-white bg-gradient-to-r from-[#0B3D91] via-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-md shadow-[#3BA7F2]/25 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:translate-y-0 disabled:opacity-50 group cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl text-sm font-black text-white bg-gradient-to-r from-[#0B3D91] via-[#0B3D91] to-[#3BA7F2] hover:brightness-105 shadow-md shadow-[#3BA7F2]/25 hover-cinematic disabled:opacity-50 group cursor-pointer"
                 >
                   {status === "loading" ? (
                     <span>Routing to imakosolution@gmail.com...</span>
@@ -276,7 +294,7 @@ function ContactFormContent() {
 
       {/* Right Column: Founder Hotlines, Email, and Remote Notice (5 cols) */}
       <div className="lg:col-span-5 space-y-6">
-        <RevealOnScroll direction="right" durationMs={800} delayMs={100}>
+        <RevealOnScroll direction="up" durationMs={800} delayMs={250}>
           <div className="space-y-6">
             {/* Remote / Online Notice Box */}
             <div className="p-6 rounded-3xl bg-white border-2 border-[#CBE5FC] shadow-sm space-y-3 hover:shadow-md transition-shadow">
