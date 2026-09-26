@@ -1,27 +1,31 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { FloatingContactDock } from "@/components/FloatingContactDock";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { ChatbotWidget } from "@/components/ChatbotWidget";
 
 export const metadata: Metadata = {
-  title: "Imako Solution — AI Automations & High-Conversion Web Platforms",
+  title: "Imako Solution — AI Powered Solution for Real World Problems",
   description:
-    "Imako Solution engineers custom AI automations, interactive web platforms, and automated workflow engines. Cloud & Remote First.",
+    "Imako Solution engineers autonomous AI workflows, agentic systems, and high-conversion web platforms that liberate enterprise capacity and accelerate business growth. Founded July 27, 2026.",
   keywords: [
-    "AI Automations",
     "Imako Solution",
-    "Imako Digital Agency",
-    "Next.js Development",
-    "Business Process Automation",
-    "Ethiopia AI Agency",
-    "Cloud Remote First"
+    "AI Automation",
+    "Website Development",
+    "AI Agents",
+    "AI Chatbots",
+    "Imran Mohammedbeyan",
+    "Mikiyas Alemu",
+    "Machine Learning Solutions",
+    "Ethiopia AI"
   ],
-  authors: [{ name: "Imako Solution" }],
+  authors: [{ name: "Imran Mohammedbeyan" }, { name: "Mikiyas Alemu" }],
   icons: {
     icon: "/imako-logo.png",
   },
   openGraph: {
-    title: "Imako Solution — AI Automations & High-Conversion Web Platforms",
-    description: "Replace repetitive manual work with autonomous AI systems and high-impact web applications.",
+    title: "Imako Solution — AI Powered Solution for Real World Problems",
+    description: "Building autonomous intelligence and enterprise web systems for real world problems.",
     url: "https://imakosolution.com",
     siteName: "Imako Solution",
     type: "website",
@@ -35,10 +39,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth">
-      <body className="min-h-screen bg-[#070A0F] text-[#FFFFFF] antialiased selection:bg-[#38BDF8]/25 selection:text-[#38BDF8]">
-        {children}
-        {/* Unobtrusive Floating Multi-Contact Dock */}
-        <FloatingContactDock />
+      <body className="min-h-screen bg-[#070A0F] text-[#FFFFFF] antialiased selection:bg-[#38BDF8]/25 selection:text-[#38BDF8] flex flex-col justify-between">
+        {/* Persistent Global Header */}
+        <Header />
+
+        {/* Page Main Content */}
+        <div className="flex-1">
+          {children}
+        </div>
+
+        {/* Persistent Global Footer */}
+        <Footer />
+
+        {/* Live AI Chatbot Widget connected to Telegram & WhatsApp */}
+        <ChatbotWidget />
       </body>
     </html>
   );

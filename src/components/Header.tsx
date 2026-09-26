@@ -2,17 +2,34 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Sparkles, MessageSquare, Menu, X, ArrowUpRight, Cpu } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Sparkles, Menu, X, ArrowUpRight, Cpu } from "lucide-react";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "About / Founders", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "Our Team", href: "/team" },
+    { name: "Contact", href: "/contact" }
+  ];
+
+  const isActive = (href: string) => {
+    if (href === "/" && pathname !== "/") return false;
+    return pathname.startsWith(href);
+  };
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-[#070A0F]/90 border-b border-white/5 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand / Logo */}
-        <div className="flex items-center space-x-3">
-          <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-gradient-to-tr from-[#38BDF8]/20 via-white/10 to-[#EF4444]/25 border border-sky-400/20 flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(56,189,248,0.25)]">
+        <Link href="/" className="flex items-center space-x-3 group">
+          <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-gradient-to-tr from-[#38BDF8]/20 via-white/10 to-[#EF4444]/25 border border-sky-400/20 flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(56,189,248,0.25)] group-hover:border-sky-400/50 transition-colors">
             <Image
               src="/imako-logo.png"
               alt="Imako Solution Logo"
@@ -30,45 +47,49 @@ export function Header() {
               <span className="text-xl font-black tracking-tight text-white flex items-center gap-1.5">
                 IMAKO <span className="text-[#38BDF8]">SOLUTION</span>
               </span>
-              <span className="hidden md:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#EF4444]/15 text-[#EF4444] border border-[#EF4444]/30">
-                AI & WEB
+              <span className="hidden lg:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#EF4444]/15 text-[#EF4444] border border-[#EF4444]/30">
+                AI NATIVE
               </span>
             </div>
             <p className="text-[11px] text-gray-400 tracking-wide font-mono hidden sm:block">
-              AI Automations & High-Conversion Digital Systems
+              AI powered solution for real world problems
             </p>
           </div>
-        </div>
+        </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
-          <a href="#roi-simulator" className="hover:text-[#38BDF8] transition-colors flex items-center gap-1">
-            <Sparkles className="w-3.5 h-3.5 text-[#38BDF8]" />
-            ROI Simulator
-          </a>
-          <a href="#portfolio" className="hover:text-[#38BDF8] transition-colors">
-            Portfolio
-          </a>
-          <a href="#services" className="hover:text-[#38BDF8] transition-colors">
-            AI Capabilities
-          </a>
-          <a href="#contact" className="hover:text-[#38BDF8] transition-colors">
-            Contact
-          </a>
+        {/* Desktop Navigation across 6 fixed pages */}
+        <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-medium">
+          {navLinks.map((link) => {
+            const active = isActive(link.href);
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`transition-colors py-1 relative ${
+                  active
+                    ? "text-[#38BDF8] font-bold"
+                    : "text-gray-300 hover:text-[#38BDF8]"
+                }`}
+              >
+                {link.name}
+                {active && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#38BDF8] rounded-full shadow-[0_0_8px_rgba(56,189,248,0.8)]" />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* Action Button */}
-        <div className="hidden sm:flex items-center space-x-4">
-          <a
-            href="https://wa.me/251907173634?text=Hello%20Imako%20Solution,%20I'd%20like%20to%20discuss%20an%20AI%20automation%20project."
-            target="_blank"
-            rel="noopener noreferrer"
+        {/* Action Button: Get a Quote */}
+        <div className="hidden sm:flex items-center space-x-3">
+          <Link
+            href="/contact"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0284C7] via-[#38BDF8] to-[#EF4444] hover:brightness-110 shadow-[0_0_20px_rgba(56,189,248,0.35)] transition-all transform hover:-translate-y-0.5"
           >
-            <MessageSquare className="w-3.5 h-3.5" />
-            <span>Chat On WhatsApp</span>
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Get a Quote</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
+          </Link>
         </div>
 
         {/* Mobile menu toggle */}
@@ -85,44 +106,32 @@ export function Header() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-white/10 bg-[#0D131F]/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-4">
-          <a
-            href="#roi-simulator"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-base font-medium text-gray-200 hover:text-[#38BDF8] py-2"
-          >
-            ⚡ ROI / Time-Saved Simulator
-          </a>
-          <a
-            href="#portfolio"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-base font-medium text-gray-200 hover:text-[#38BDF8] py-2"
-          >
-            💼 Portfolio Case Studies (7 Projects)
-          </a>
-          <a
-            href="#services"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-base font-medium text-gray-200 hover:text-[#38BDF8] py-2"
-          >
-            🤖 AI Automation Services
-          </a>
-          <a
-            href="#contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-base font-medium text-gray-200 hover:text-[#38BDF8] py-2"
-          >
-            📬 Contact & Hotlines
-          </a>
+        <div className="md:hidden border-b border-white/10 bg-[#0D131F]/98 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3">
+          {navLinks.map((link) => {
+            const active = isActive(link.href);
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block text-sm font-semibold py-2 px-3 rounded-lg transition-colors ${
+                  active
+                    ? "bg-sky-500/15 text-[#38BDF8] border border-sky-400/20"
+                    : "text-gray-300 hover:text-white hover:bg-white/5"
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
           <div className="pt-2">
-            <a
-              href="https://wa.me/251907173634"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
               className="w-full text-center block py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#0284C7] via-[#38BDF8] to-[#EF4444]"
             >
-              Direct WhatsApp Chat
-            </a>
+              Get a Quote / Consultation
+            </Link>
           </div>
         </div>
       )}
